@@ -1,31 +1,62 @@
 # Information for how to play each card of the deck
 from dataclasses import dataclass
-from typing import Optional, Tuple, List, Union
-from typing_extensions import TypeAlias
+from typing import Optional, Tuple, List
 import json
 
 Pos = Tuple[int, int]
 
-@dataclass
-class Card:
-    name: str
-    elixir: int
-    area: bool # if it's attack is on area
-    structure: bool # if it's a structure or a card
-    lifetime: Optional[int] # structure lifetime
-    stats_info: dict
+CARDS_STATS = json.load(open('cards_stats.json'))
+CARDS_BASICS = json.load(open('cards.json'))
+for card in CARDS_BASICS['ElectroWizard']:
+    print(card)
 
-BarbarianHut = Card('BarbarianHut', 7, False, True, 40)
-ElixirCollector = Card('ElixirCollector', 6, False, True, 65)
-Furnace = Card('Furnace', 4, False, True, 33)
-GoblinHut = Card('GoblinHut', 5, False, True, 31)
-IceWizard = Card('IceWizard', 3, True, False, None, {'deploy_time': 1000, 'speed': 60, 'hitpoints': 569, 'range': 5500, 'attacks_ground': True, 'attacks_air': True, 'target_only_buildings': False, 'type': 'troop'})
-Knight = Card('Knight', 3, False, False, None, {'deploy_time': 1000, 'speed': 60, 'hitpoints': 651, 'range': 1200, 'attacks_ground': True, 'attacks_air': False, 'target_only_buildings': False, 'type': 'troop'})
-Musketeer = Card('Musketeer', 4, False, False, None, {'deploy_time': 1000, 'speed': 60, 'hitpoints': 340, 'range': 6000, 'attacks_ground': True, 'attacks_air': True, 'target_only_buildings': False, 'type': 'troop'})
-Tombstone = Card('Tombstone', 3, False, True, 30)
-FireSpirit = Card('FireSpirit', 1, True, False, None)
-Bomber = Card('Bomber', 2, True, False, None, {'deploy_time': 1000, 'speed': 60, 'hitpoints': 130, 'range': 4500, 'attacks_ground': True, 'attacks_air': False, 'target_only_buildings': False, 'type': 'troop'})
-MegaMinion = Card('MegaMinion', 3, False, False, None, {'deploy_time': 1000, 'speed': 60, 'hitpoints': 395, 'range': 1600, 'attacks_ground': True, 'attacks_air': True, 'target_only_buildings': False, 'type': 'troop'})
+def info(card: str, useful_info: List[str]) -> dict:
+    '''returns the required useful info about a given card in form of a dictionary'''
+    # categories to search in
+    categories = ['building', 'spell', 'projectile', 'characters']
+
+    for category in categories:
+        names = [card['name'] for card in CARDS_STATS[category]]
+        if card in names:
+            d = CARDS_STATS[category][names.index(card)]
+            info = {x:d.get(x, None) for x in useful_info}
+            card_info = info
+            card_info['elixir'] = CARDS_BASICS[card]['elixir']
+            card_info['type'] = category
+            del card_info['mana_cost']
+            return card_info
+
+class Card:
+    stats: dict # all the card stats
+    USEFUL_INFO = ["name", "life_time", "deploy_time", "speed", "hitpoints", "range", "attacks_ground", "attacks_air", "target_only_buildings"]
+
+    def __init__(self, card_name: str) -> None:
+        self.stats = info(card_name, self.USEFUL_INFO)
+        assert self.stats is not None, f'the card with name: {card_name} has not been found'
+        self._check_stats()
+    
+    def show_stats(self):
+        for stat, value in self.stats.items():
+            print(f"{stat}: {value}")
+    
+    def _check_stats(self):
+        '''checks all the necesary stats are correct'''
+        NEC_STATS = ["name", "elixir"]
+        for stat in NEC_STATS:
+            assert self.stats[stat] is not None, f"missing {stat} stat in {self.stats['name']}"
+
+BarbarianHut = Card('BarbarianHut')
+ElixirCollector = Card('ElixirCollector')
+ElixirCollector.show_stats()
+Furnace = Card('FirespiritHut')
+GoblinHut = Card('GoblinHut')
+IceWizard = Card('IceWizard')
+Knight = Card('Knight')
+Musketeer = Card('Musketeer')
+Tombstone = Card('Tombstone')
+FireSpirit = Card('FireSpirits')
+Bomber = Card('Bomber')
+MegaMinion = Card('MegaMinion')
 
 #for each card name associates its card class
 CARDS_DICT = {
@@ -41,22 +72,3 @@ CARDS_DICT = {
     'Bomber' : Bomber,
     'MegaMinion' : MegaMinion
 }
-
-
-# Opening JSON file
-with open('cards_stats.json') as json_file:
-    data = json.load(json_file)
-    
-    useful_information = ["deploy_time", "speed", "hitpoints", "range", "attacks_ground", "attacks_air", "target_only_buildings"] #, "elixir", "type"
-    # Print the type of data variable
-    print("Type:", type(data))
-    print(len(data["characters"]))
-    names = [troop['name'] for troop in data["characters"]]
-    cards = [card for card in CARDS_DICT]
-    cards_info = {}
-    for card in cards:
-        if card in names:
-            d = data["characters"][names.index(card)]
-            info = {x:d.get(x, None) for x in useful_information}
-            cards_info[card] = info
-    print(cards_info)
