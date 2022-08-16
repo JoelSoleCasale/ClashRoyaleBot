@@ -5,58 +5,39 @@ import json
 
 Pos = Tuple[int, int]
 
-CARDS_STATS = json.load(open('cards_stats.json'))
-CARDS_BASICS = json.load(open('cards.json'))
-for card in CARDS_BASICS['ElectroWizard']:
-    print(card)
-
-def info(card: str, useful_info: List[str]) -> dict:
-    '''returns the required useful info about a given card in form of a dictionary'''
-    # categories to search in
-    categories = ['building', 'spell', 'projectile', 'characters']
-
-    for category in categories:
-        names = [card['name'] for card in CARDS_STATS[category]]
-        if card in names:
-            d = CARDS_STATS[category][names.index(card)]
-            info = {x:d.get(x, None) for x in useful_info}
-            card_info = info
-            card_info['elixir'] = CARDS_BASICS[card]['elixir']
-            card_info['type'] = category
-            del card_info['mana_cost']
-            return card_info
+CARDS_STATS = json.load(open('useful_cards_stats.json'))
 
 class Card:
     stats: dict # all the card stats
-    USEFUL_INFO = ["name", "life_time", "deploy_time", "speed", "hitpoints", "range", "attacks_ground", "attacks_air", "target_only_buildings"]
 
     def __init__(self, card_name: str) -> None:
-        self.stats = info(card_name, self.USEFUL_INFO)
+        self.stats = CARDS_STATS.get(card_name)
         assert self.stats is not None, f'the card with name: {card_name} has not been found'
         self._check_stats()
     
     def show_stats(self):
+        print(f"Name: {self.stats['name']}\n")
         for stat, value in self.stats.items():
             print(f"{stat}: {value}")
     
     def _check_stats(self):
-        '''checks all the necesary stats are correct'''
-        NEC_STATS = ["name", "elixir"]
-        for stat in NEC_STATS:
-            assert self.stats[stat] is not None, f"missing {stat} stat in {self.stats['name']}"
+        '''checks if all the required stats exists'''
+        REQ_STATS = ["name", "elixir"]
+        for stat in REQ_STATS:
+            assert self.stats[stat] is not None, f"missing {stat} stat in {self.stats['key']}"
 
-BarbarianHut = Card('BarbarianHut')
-ElixirCollector = Card('ElixirCollector')
+BarbarianHut = Card('Barbarian Hut')
+ElixirCollector = Card('Elixir Collector')
 ElixirCollector.show_stats()
-Furnace = Card('FirespiritHut')
-GoblinHut = Card('GoblinHut')
-IceWizard = Card('IceWizard')
+Furnace = Card('Furnace')
+GoblinHut = Card('Goblin Hut')
+IceWizard = Card('Ice Wizard')
 Knight = Card('Knight')
 Musketeer = Card('Musketeer')
 Tombstone = Card('Tombstone')
-FireSpirit = Card('FireSpirits')
+FireSpirit = Card('Fire Spirit')
 Bomber = Card('Bomber')
-MegaMinion = Card('MegaMinion')
+MegaMinion = Card('Mega Minion')
 
 #for each card name associates its card class
 CARDS_DICT = {

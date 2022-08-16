@@ -1,8 +1,8 @@
 [
     {
-        "sc_key": "knight",
+        "key": "knight",
         "name": "Knight",
-        "key": "Knight",
+        "sc_key": "Knight",
         "elixir": 3,
         "type": "Troop",
         "rarity": "Common",
@@ -11,9 +11,9 @@
         "id": 26000000
     },
     {
-        "sc_key": "archers",
+        "key": "archers",
         "name": "Archers",
-        "key": "Archer",
+        "sc_key": "Archer",
         "elixir": 3,
         "type": "Troop",
         "rarity": "Common",
@@ -22,9 +22,9 @@
         "id": 26000001
     },
     {
-        "sc_key": "goblins",
+        "key": "goblins",
         "name": "Goblins",
-        "key": "Goblins",
+        "sc_key": "Goblins",
         "elixir": 2,
         "type": "Troop",
         "rarity": "Common",
@@ -33,9 +33,9 @@
         "id": 26000002
     },
     {
-        "sc_key": "giant",
+        "key": "giant",
         "name": "Giant",
-        "key": "Giant",
+        "sc_key": "Giant",
         "elixir": 5,
         "type": "Troop",
         "rarity": "Rare",
@@ -44,9 +44,9 @@
         "id": 26000003
     },
     {
-        "sc_key": "pekka",
+        "key": "pekka",
         "name": "P.E.K.K.A",
-        "key": "Pekka",
+        "sc_key": "Pekka",
         "elixir": 7,
         "type": "Troop",
         "rarity": "Epic",
@@ -55,9 +55,9 @@
         "id": 26000004
     },
     {
-        "sc_key": "minions",
+        "key": "minions",
         "name": "Minions",
-        "key": "Minions",
+        "sc_key": "Minions",
         "elixir": 3,
         "type": "Troop",
         "rarity": "Common",
@@ -66,9 +66,9 @@
         "id": 26000005
     },
     {
-        "sc_key": "balloon",
+        "key": "balloon",
         "name": "Balloon",
-        "key": "Balloon",
+        "sc_key": "Balloon",
         "elixir": 5,
         "type": "Troop",
         "rarity": "Epic",
@@ -77,9 +77,9 @@
         "id": 26000006
     },
     {
-        "sc_key": "witch",
+        "key": "witch",
         "name": "Witch",
-        "key": "Witch",
+        "sc_key": "Witch",
         "elixir": 5,
         "type": "Troop",
         "rarity": "Epic",
@@ -88,9 +88,9 @@
         "id": 26000007
     },
     {
-        "sc_key": "barbarians",
+        "key": "barbarians",
         "name": "Barbarians",
-        "key": "Barbarians",
+        "sc_key": "Barbarians",
         "elixir": 5,
         "type": "Troop",
         "rarity": "Common",
@@ -99,9 +99,9 @@
         "id": 26000008
     },
     {
-        "sc_key": "golem",
+        "key": "golem",
         "name": "Golem",
-        "key": "Golem",
+        "sc_key": "Golem",
         "elixir": 8,
         "type": "Troop",
         "rarity": "Epic",
@@ -110,9 +110,9 @@
         "id": 26000009
     },
     {
-        "sc_key": "skeletons",
+        "key": "skeletons",
         "name": "Skeletons",
-        "key": "Skeletons",
+        "sc_key": "Skeletons",
         "elixir": 1,
         "type": "Troop",
         "rarity": "Common",
@@ -121,9 +121,9 @@
         "id": 26000010
     },
     {
-        "sc_key": "valkyrie",
+        "key": "valkyrie",
         "name": "Valkyrie",
-        "key": "Valkyrie",
+        "sc_key": "Valkyrie",
         "elixir": 4,
         "type": "Troop",
         "rarity": "Rare",
@@ -132,9 +132,9 @@
         "id": 26000011
     },
     {
-        "sc_key": "skeleton-army",
+        "key": "skeleton-army",
         "name": "Skeleton Army",
-        "key": "SkeletonArmy",
+        "sc_key": "SkeletonArmy",
         "elixir": 3,
         "type": "Troop",
         "rarity": "Epic",
@@ -143,9 +143,9 @@
         "id": 26000012
     },
     {
-        "sc_key": "bomber",
+        "key": "bomber",
         "name": "Bomber",
-        "key": "Bomber",
+        "sc_key": "Bomber",
         "elixir": 2,
         "type": "Troop",
         "rarity": "Common",
@@ -154,9 +154,9 @@
         "id": 26000013
     },
     {
-        "sc_key": "musketeer",
+        "key": "musketeer",
         "name": "Musketeer",
-        "key": "Musketeer",
+        "sc_key": "Musketeer",
         "elixir": 4,
         "type": "Troop",
         "rarity": "Rare",
@@ -165,9 +165,9 @@
         "id": 26000014
     },
     {
-        "sc_key": "baby-dragon",
+        "key": "baby-dragon",
         "name": "Baby Dragon",
-        "key": "BabyDragon",
+        "sc_key": "BabyDragon",
         "elixir": 4,
         "type": "Troop",
         "rarity": "Epic",
@@ -176,9 +176,9 @@
         "id": 26000015
     },
     {
-        "sc_key": "prince",
+        "key": "prince",
         "name": "Prince",
-        "key": "Prince",
+        "sc_key": "Prince",
         "elixir": 5,
         "type": "Troop",
         "rarity": "Epic",
@@ -187,9 +187,9 @@
         "id": 26000016
     },
     {
-        "sc_key": "wizard",
+        "key": "wizard",
         "name": "Wizard",
-        "key": "Wizard",
+        "sc_key": "Wizard",
         "elixir": 5,
         "type": "Troop",
         "rarity": "Rare",
@@ -198,9 +198,9 @@
         "id": 26000017
     },
     {
-        "sc_key": "mini-pekka",
+        "key": "mini-pekka",
         "name": "Mini P.E.K.K.A",
-        "key": "MiniPekka",
+        "sc_key": "MiniPekka",
         "elixir": 4,
         "type": "Troop",
         "rarity": "Rare",
@@ -209,9 +209,9 @@
         "id": 26000018
     },
     {
-        "sc_key": "spear-goblins",
+        "key": "spear-goblins",
         "name": "Spear Goblins",
-        "key": "SpearGoblins",
+        "sc_key": "SpearGoblins",
         "elixir": 2,
         "type": "Troop",
         "rarity": "Common",
@@ -220,9 +220,9 @@
         "id": 26000019
     },
     {
-        "sc_key": "giant-skeleton",
+        "key": "giant-skeleton",
         "name": "Giant Skeleton",
-        "key": "GiantSkeleton",
+        "sc_key": "GiantSkeleton",
         "elixir": 6,
         "type": "Troop",
         "rarity": "Epic",
@@ -231,9 +231,9 @@
         "id": 26000020
     },
     {
-        "sc_key": "hog-rider",
+        "key": "hog-rider",
         "name": "Hog Rider",
-        "key": "HogRider",
+        "sc_key": "HogRider",
         "elixir": 4,
         "type": "Troop",
         "rarity": "Rare",
@@ -242,9 +242,9 @@
         "id": 26000021
     },
     {
-        "sc_key": "minion-horde",
+        "key": "minion-horde",
         "name": "Minion Horde",
-        "key": "MinionHorde",
+        "sc_key": "MinionHorde",
         "elixir": 5,
         "type": "Troop",
         "rarity": "Common",
@@ -253,9 +253,9 @@
         "id": 26000022
     },
     {
-        "sc_key": "ice-wizard",
+        "key": "ice-wizard",
         "name": "Ice Wizard",
-        "key": "IceWizard",
+        "sc_key": "IceWizard",
         "elixir": 3,
         "type": "Troop",
         "rarity": "Legendary",
@@ -264,9 +264,9 @@
         "id": 26000023
     },
     {
-        "sc_key": "royal-giant",
+        "key": "royal-giant",
         "name": "Royal Giant",
-        "key": "RoyalGiant",
+        "sc_key": "RoyalGiant",
         "elixir": 6,
         "type": "Troop",
         "rarity": "Common",
@@ -275,9 +275,9 @@
         "id": 26000024
     },
     {
-        "sc_key": "guards",
+        "key": "guards",
         "name": "Guards",
-        "key": "SkeletonWarriors",
+        "sc_key": "SkeletonWarriors",
         "elixir": 3,
         "type": "Troop",
         "rarity": "Epic",
@@ -286,9 +286,9 @@
         "id": 26000025
     },
     {
-        "sc_key": "princess",
+        "key": "princess",
         "name": "Princess",
-        "key": "Princess",
+        "sc_key": "Princess",
         "elixir": 3,
         "type": "Troop",
         "rarity": "Legendary",
@@ -297,9 +297,9 @@
         "id": 26000026
     },
     {
-        "sc_key": "dark-prince",
+        "key": "dark-prince",
         "name": "Dark Prince",
-        "key": "DarkPrince",
+        "sc_key": "DarkPrince",
         "elixir": 4,
         "type": "Troop",
         "rarity": "Epic",
@@ -308,9 +308,9 @@
         "id": 26000027
     },
     {
-        "sc_key": "three-musketeers",
+        "key": "three-musketeers",
         "name": "Three Musketeers",
-        "key": "ThreeMusketeers",
+        "sc_key": "ThreeMusketeers",
         "elixir": 9,
         "type": "Troop",
         "rarity": "Rare",
@@ -319,9 +319,9 @@
         "id": 26000028
     },
     {
-        "sc_key": "lava-hound",
+        "key": "lava-hound",
         "name": "Lava Hound",
-        "key": "LavaHound",
+        "sc_key": "LavaHound",
         "elixir": 7,
         "type": "Troop",
         "rarity": "Legendary",
@@ -330,9 +330,9 @@
         "id": 26000029
     },
     {
-        "sc_key": "ice-spirit",
+        "key": "ice-spirit",
         "name": "Ice Spirit",
-        "key": "IceSpirits",
+        "sc_key": "IceSpirits",
         "elixir": 1,
         "type": "Troop",
         "rarity": "Common",
@@ -341,9 +341,9 @@
         "id": 26000030
     },
     {
-        "sc_key": "fire-spirit",
+        "key": "fire-spirit",
         "name": "Fire Spirit",
-        "key": "FireSpirits",
+        "sc_key": "FireSpirits",
         "elixir": 1,
         "type": "Troop",
         "rarity": "Common",
@@ -352,9 +352,9 @@
         "id": 26000031
     },
     {
-        "sc_key": "miner",
+        "key": "miner",
         "name": "Miner",
-        "key": "Miner",
+        "sc_key": "Miner",
         "elixir": 3,
         "type": "Troop",
         "rarity": "Legendary",
@@ -363,9 +363,9 @@
         "id": 26000032
     },
     {
-        "sc_key": "sparky",
+        "key": "sparky",
         "name": "Sparky",
-        "key": "ZapMachine",
+        "sc_key": "ZapMachine",
         "elixir": 6,
         "type": "Troop",
         "rarity": "Legendary",
@@ -374,9 +374,9 @@
         "id": 26000033
     },
     {
-        "sc_key": "bowler",
+        "key": "bowler",
         "name": "Bowler",
-        "key": "Bowler",
+        "sc_key": "Bowler",
         "elixir": 5,
         "type": "Troop",
         "rarity": "Epic",
@@ -385,9 +385,9 @@
         "id": 26000034
     },
     {
-        "sc_key": "lumberjack",
+        "key": "lumberjack",
         "name": "Lumberjack",
-        "key": "RageBarbarian",
+        "sc_key": "RageBarbarian",
         "elixir": 4,
         "type": "Troop",
         "rarity": "Legendary",
@@ -396,9 +396,9 @@
         "id": 26000035
     },
     {
-        "sc_key": "battle-ram",
+        "key": "battle-ram",
         "name": "Battle Ram",
-        "key": "BattleRam",
+        "sc_key": "BattleRam",
         "elixir": 4,
         "type": "Troop",
         "rarity": "Rare",
@@ -407,9 +407,9 @@
         "id": 26000036
     },
     {
-        "sc_key": "inferno-dragon",
+        "key": "inferno-dragon",
         "name": "Inferno Dragon",
-        "key": "InfernoDragon",
+        "sc_key": "InfernoDragon",
         "elixir": 4,
         "type": "Troop",
         "rarity": "Legendary",
@@ -418,9 +418,9 @@
         "id": 26000037
     },
     {
-        "sc_key": "ice-golem",
+        "key": "ice-golem",
         "name": "Ice Golem",
-        "key": "IceGolemite",
+        "sc_key": "IceGolemite",
         "elixir": 2,
         "type": "Troop",
         "rarity": "Rare",
@@ -429,9 +429,9 @@
         "id": 26000038
     },
     {
-        "sc_key": "mega-minion",
+        "key": "mega-minion",
         "name": "Mega Minion",
-        "key": "MegaMinion",
+        "sc_key": "MegaMinion",
         "elixir": 3,
         "type": "Troop",
         "rarity": "Rare",
@@ -440,9 +440,9 @@
         "id": 26000039
     },
     {
-        "sc_key": "dart-goblin",
+        "key": "dart-goblin",
         "name": "Dart Goblin",
-        "key": "BlowdartGoblin",
+        "sc_key": "BlowdartGoblin",
         "elixir": 3,
         "type": "Troop",
         "rarity": "Rare",
@@ -451,9 +451,9 @@
         "id": 26000040
     },
     {
-        "sc_key": "goblin-gang",
+        "key": "goblin-gang",
         "name": "Goblin Gang",
-        "key": "GoblinGang",
+        "sc_key": "GoblinGang",
         "elixir": 3,
         "type": "Troop",
         "rarity": "Common",
@@ -462,9 +462,9 @@
         "id": 26000041
     },
     {
-        "sc_key": "electro-wizard",
+        "key": "electro-wizard",
         "name": "Electro Wizard",
-        "key": "ElectroWizard",
+        "sc_key": "ElectroWizard",
         "elixir": 4,
         "type": "Troop",
         "rarity": "Legendary",
@@ -473,9 +473,9 @@
         "id": 26000042
     },
     {
-        "sc_key": "elite-barbarians",
+        "key": "elite-barbarians",
         "name": "Elite Barbarians",
-        "key": "AngryBarbarians",
+        "sc_key": "AngryBarbarians",
         "elixir": 6,
         "type": "Troop",
         "rarity": "Common",
@@ -484,9 +484,9 @@
         "id": 26000043
     },
     {
-        "sc_key": "hunter",
+        "key": "hunter",
         "name": "Hunter",
-        "key": "Hunter",
+        "sc_key": "Hunter",
         "elixir": 4,
         "type": "Troop",
         "rarity": "Epic",
@@ -495,9 +495,9 @@
         "id": 26000044
     },
     {
-        "sc_key": "executioner",
+        "key": "executioner",
         "name": "Executioner",
-        "key": "AxeMan",
+        "sc_key": "AxeMan",
         "elixir": 5,
         "type": "Troop",
         "rarity": "Epic",
@@ -506,9 +506,9 @@
         "id": 26000045
     },
     {
-        "sc_key": "bandit",
+        "key": "bandit",
         "name": "Bandit",
-        "key": "Assassin",
+        "sc_key": "Assassin",
         "elixir": 3,
         "type": "Troop",
         "rarity": "Legendary",
@@ -517,9 +517,9 @@
         "id": 26000046
     },
     {
-        "sc_key": "royal-recruits",
+        "key": "royal-recruits",
         "name": "Royal Recruits",
-        "key": "RoyalRecruits",
+        "sc_key": "RoyalRecruits",
         "elixir": 7,
         "type": "Troop",
         "rarity": "Common",
@@ -528,9 +528,9 @@
         "id": 26000047
     },
     {
-        "sc_key": "night-witch",
+        "key": "night-witch",
         "name": "Night Witch",
-        "key": "DarkWitch",
+        "sc_key": "DarkWitch",
         "elixir": 4,
         "type": "Troop",
         "rarity": "Legendary",
@@ -539,9 +539,9 @@
         "id": 26000048
     },
     {
-        "sc_key": "bats",
+        "key": "bats",
         "name": "Bats",
-        "key": "Bats",
+        "sc_key": "Bats",
         "elixir": 2,
         "type": "Troop",
         "rarity": "Common",
@@ -550,9 +550,9 @@
         "id": 26000049
     },
     {
-        "sc_key": "royal-ghost",
+        "key": "royal-ghost",
         "name": "Royal Ghost",
-        "key": "Ghost",
+        "sc_key": "Ghost",
         "elixir": 3,
         "type": "Troop",
         "rarity": "Legendary",
@@ -561,9 +561,9 @@
         "id": 26000050
     },
     {
-        "sc_key": "ram-rider",
+        "key": "ram-rider",
         "name": "Ram Rider",
-        "key": "RamRider",
+        "sc_key": "RamRider",
         "elixir": 5,
         "type": "Troop",
         "rarity": "Legendary",
@@ -572,9 +572,9 @@
         "id": 26000051
     },
     {
-        "sc_key": "zappies",
+        "key": "zappies",
         "name": "Zappies",
-        "key": "MiniSparkys",
+        "sc_key": "MiniSparkys",
         "elixir": 4,
         "type": "Troop",
         "rarity": "Rare",
@@ -583,9 +583,9 @@
         "id": 26000052
     },
     {
-        "sc_key": "rascals",
+        "key": "rascals",
         "name": "Rascals",
-        "key": "Rascals",
+        "sc_key": "Rascals",
         "elixir": 5,
         "type": "Troop",
         "rarity": "Common",
@@ -594,9 +594,9 @@
         "id": 26000053
     },
     {
-        "sc_key": "cannon-cart",
+        "key": "cannon-cart",
         "name": "Cannon Cart",
-        "key": "MovingCannon",
+        "sc_key": "MovingCannon",
         "elixir": 5,
         "type": "Troop",
         "rarity": "Epic",
@@ -605,9 +605,9 @@
         "id": 26000054
     },
     {
-        "sc_key": "mega-knight",
+        "key": "mega-knight",
         "name": "Mega Knight",
-        "key": "MegaKnight",
+        "sc_key": "MegaKnight",
         "elixir": 7,
         "type": "Troop",
         "rarity": "Legendary",
@@ -616,9 +616,9 @@
         "id": 26000055
     },
     {
-        "sc_key": "skeleton-barrel",
+        "key": "skeleton-barrel",
         "name": "Skeleton Barrel",
-        "key": "SkeletonBalloon",
+        "sc_key": "SkeletonBalloon",
         "elixir": 3,
         "type": "Troop",
         "rarity": "Common",
@@ -627,9 +627,9 @@
         "id": 26000056
     },
     {
-        "sc_key": "flying-machine",
+        "key": "flying-machine",
         "name": "Flying Machine",
-        "key": "DartBarrell",
+        "sc_key": "DartBarrell",
         "elixir": 4,
         "type": "Troop",
         "rarity": "Rare",
@@ -638,9 +638,9 @@
         "id": 26000057
     },
     {
-        "sc_key": "wall-breakers",
+        "key": "wall-breakers",
         "name": "Wall Breakers",
-        "key": "Wallbreakers",
+        "sc_key": "Wallbreakers",
         "elixir": 2,
         "type": "Troop",
         "rarity": "Epic",
@@ -649,9 +649,9 @@
         "id": 26000058
     },
     {
-        "sc_key": "royal-hogs",
+        "key": "royal-hogs",
         "name": "Royal Hogs",
-        "key": "RoyalHogs",
+        "sc_key": "RoyalHogs",
         "elixir": 5,
         "type": "Troop",
         "rarity": "Rare",
@@ -660,9 +660,9 @@
         "id": 26000059
     },
     {
-        "sc_key": "goblin-giant",
+        "key": "goblin-giant",
         "name": "Goblin Giant",
-        "key": "GoblinGiant",
+        "sc_key": "GoblinGiant",
         "elixir": 6,
         "type": "Troop",
         "rarity": "Epic",
@@ -671,9 +671,9 @@
         "id": 26000060
     },
     {
-        "sc_key": "fisherman",
+        "key": "fisherman",
         "name": "Fisherman",
-        "key": "Fisherman",
+        "sc_key": "Fisherman",
         "elixir": 3,
         "type": "Troop",
         "rarity": "Legendary",
@@ -682,9 +682,9 @@
         "id": 26000061
     },
     {
-        "sc_key": "magic-archer",
+        "key": "magic-archer",
         "name": "Magic Archer",
-        "key": "EliteArcher",
+        "sc_key": "EliteArcher",
         "elixir": 4,
         "type": "Troop",
         "rarity": "Legendary",
@@ -693,9 +693,9 @@
         "id": 26000062
     },
     {
-        "sc_key": "electro-dragon",
+        "key": "electro-dragon",
         "name": "Electro Dragon",
-        "key": "ElectroDragon",
+        "sc_key": "ElectroDragon",
         "elixir": 5,
         "type": "Troop",
         "rarity": "Epic",
@@ -704,9 +704,9 @@
         "id": 26000063
     },
     {
-        "sc_key": "firecracker",
+        "key": "firecracker",
         "name": "Firecracker",
-        "key": "Firecracker",
+        "sc_key": "Firecracker",
         "elixir": 3,
         "type": "Troop",
         "rarity": "Common",
@@ -715,9 +715,9 @@
         "id": 26000064
     },
     {
-        "sc_key": "mighty-miner",
+        "key": "mighty-miner",
         "name": "Mighty Miner",
-        "key": "MightyMiner",
+        "sc_key": "MightyMiner",
         "elixir": 4,
         "type": "Troop",
         "rarity": "Champion",
@@ -726,9 +726,9 @@
         "id": 26000065
     },
     {
-        "sc_key": "elixir-golem",
+        "key": "elixir-golem",
         "name": "Elixir Golem",
-        "key": "ElixirGolem",
+        "sc_key": "ElixirGolem",
         "elixir": 3,
         "type": "Troop",
         "rarity": "Rare",
@@ -737,9 +737,9 @@
         "id": 26000067
     },
     {
-        "sc_key": "battle-healer",
+        "key": "battle-healer",
         "name": "Battle Healer",
-        "key": "BattleHealer",
+        "sc_key": "BattleHealer",
         "elixir": 4,
         "type": "Troop",
         "rarity": "Rare",
@@ -748,9 +748,9 @@
         "id": 26000068
     },
     {
-        "sc_key": "skeleton-king",
+        "key": "skeleton-king",
         "name": "Skeleton King",
-        "key": "SkeletonKing",
+        "sc_key": "SkeletonKing",
         "elixir": 4,
         "type": "Troop",
         "rarity": "Champion",
@@ -759,9 +759,9 @@
         "id": 26000069
     },
     {
-        "sc_key": "archer-queen",
+        "key": "archer-queen",
         "name": "Archer Queen",
-        "key": "ArcherQueen",
+        "sc_key": "ArcherQueen",
         "elixir": 5,
         "type": "Troop",
         "rarity": "Champion",
@@ -770,9 +770,9 @@
         "id": 26000072
     },
     {
-        "sc_key": "golden-knight",
+        "key": "golden-knight",
         "name": "Golden Knight",
-        "key": "GoldenKnight",
+        "sc_key": "GoldenKnight",
         "elixir": 4,
         "type": "Troop",
         "rarity": "Champion",
@@ -781,9 +781,9 @@
         "id": 26000074
     },
     {
-        "sc_key": "skeleton-dragons",
+        "key": "skeleton-dragons",
         "name": "Skeleton Dragons",
-        "key": "SkeletonDragons",
+        "sc_key": "SkeletonDragons",
         "elixir": 4,
         "type": "Troop",
         "rarity": "Common",
@@ -792,9 +792,9 @@
         "id": 26000080
     },
     {
-        "sc_key": "super-mini-pekka",
+        "key": "super-mini-pekka",
         "name": "Super Mini P.E.K.K.A",
-        "key": "SuperMiniPekka",
+        "sc_key": "SuperMiniPekka",
         "elixir": 5,
         "type": "Troop",
         "rarity": "Legendary",
@@ -803,9 +803,9 @@
         "id": 26000082
     },
     {
-        "sc_key": "mother-witch",
+        "key": "mother-witch",
         "name": "Mother Witch",
-        "key": "WitchMother",
+        "sc_key": "WitchMother",
         "elixir": 4,
         "type": "Troop",
         "rarity": "Legendary",
@@ -814,9 +814,9 @@
         "id": 26000083
     },
     {
-        "sc_key": "electro-spirit",
+        "key": "electro-spirit",
         "name": "Electro Spirit",
-        "key": "ElectroSpirit",
+        "sc_key": "ElectroSpirit",
         "elixir": 1,
         "type": "Troop",
         "rarity": "Common",
@@ -825,9 +825,9 @@
         "id": 26000084
     },
     {
-        "sc_key": "electro-giant",
+        "key": "electro-giant",
         "name": "Electro Giant",
-        "key": "ElectroGiant",
+        "sc_key": "ElectroGiant",
         "elixir": 7,
         "type": "Troop",
         "rarity": "Epic",
@@ -836,9 +836,9 @@
         "id": 26000085
     },
     {
-        "sc_key": "cannon",
+        "key": "cannon",
         "name": "Cannon",
-        "key": "Cannon",
+        "sc_key": "Cannon",
         "elixir": 3,
         "type": "Building",
         "rarity": "Common",
@@ -847,9 +847,9 @@
         "id": 27000000
     },
     {
-        "sc_key": "goblin-hut",
+        "key": "goblin-hut",
         "name": "Goblin Hut",
-        "key": "GoblinHut",
+        "sc_key": "GoblinHut",
         "elixir": 5,
         "type": "Building",
         "rarity": "Rare",
@@ -858,9 +858,9 @@
         "id": 27000001
     },
     {
-        "sc_key": "mortar",
+        "key": "mortar",
         "name": "Mortar",
-        "key": "Mortar",
+        "sc_key": "Mortar",
         "elixir": 4,
         "type": "Building",
         "rarity": "Common",
@@ -869,20 +869,20 @@
         "id": 27000002
     },
     {
-        "sc_key": "inferno-tower",
+        "key": "inferno-tower",
         "name": "Inferno Tower",
-        "key": "InfernoTower",
+        "sc_key": "InfernoTower",
         "elixir": 5,
         "type": "Building",
         "rarity": "Rare",
         "arena": 4,
-        "description": "Defensive building, roasts targets for damage that increaseBarbarianHuts over time. Burns through even the biggest and toughest enemies!",
+        "description": "Defensive building, roasts targets for damage that increases over time. Burns through even the biggest and toughest enemies!",
         "id": 27000003
     },
     {
-        "sc_key": "bomb-tower",
+        "key": "bomb-tower",
         "name": "Bomb Tower",
-        "key": "BombTower",
+        "sc_key": "BombTower",
         "elixir": 4,
         "type": "Building",
         "rarity": "Rare",
@@ -891,9 +891,9 @@
         "id": 27000004
     },
     {
-        "sc_key": "barbarian-hut",
+        "key": "barbarian-hut",
         "name": "Barbarian Hut",
-        "key": "BarbarianHut",
+        "sc_key": "BarbarianHut",
         "elixir": 7,
         "type": "Building",
         "rarity": "Rare",
@@ -902,9 +902,9 @@
         "id": 27000005
     },
     {
-        "sc_key": "tesla",
+        "key": "tesla",
         "name": "Tesla",
-        "key": "Tesla",
+        "sc_key": "Tesla",
         "elixir": 4,
         "type": "Building",
         "rarity": "Common",
@@ -913,9 +913,9 @@
         "id": 27000006
     },
     {
-        "sc_key": "elixir-collector",
+        "key": "elixir-collector",
         "name": "Elixir Collector",
-        "key": "Elixir Collector",
+        "sc_key": "Elixir Collector",
         "elixir": 6,
         "type": "Building",
         "rarity": "Rare",
@@ -924,9 +924,9 @@
         "id": 27000007
     },
     {
-        "sc_key": "x-bow",
+        "key": "x-bow",
         "name": "X-Bow",
-        "key": "Xbow",
+        "sc_key": "Xbow",
         "elixir": 6,
         "type": "Building",
         "rarity": "Epic",
@@ -935,9 +935,9 @@
         "id": 27000008
     },
     {
-        "sc_key": "tombstone",
+        "key": "tombstone",
         "name": "Tombstone",
-        "key": "Tombstone",
+        "sc_key": "Tombstone",
         "elixir": 3,
         "type": "Building",
         "rarity": "Rare",
@@ -946,9 +946,9 @@
         "id": 27000009
     },
     {
-        "sc_key": "furnace",
+        "key": "furnace",
         "name": "Furnace",
-        "key": "FirespiritHut",
+        "sc_key": "FirespiritHut",
         "elixir": 4,
         "type": "Building",
         "rarity": "Rare",
@@ -957,9 +957,9 @@
         "id": 27000010
     },
     {
-        "sc_key": "barbarian-launcher",
+        "key": "barbarian-launcher",
         "name": "Barbarian Launcher",
-        "key": "BarbarianLauncher",
+        "sc_key": "BarbarianLauncher",
         "elixir": 5,
         "type": "Building",
         "rarity": "Common",
@@ -968,9 +968,9 @@
         "id": 27000011
     },
     {
-        "sc_key": "goblin-cage",
+        "key": "goblin-cage",
         "name": "Goblin Cage",
-        "key": "GoblinCage",
+        "sc_key": "GoblinCage",
         "elixir": 4,
         "type": "Building",
         "rarity": "Rare",
@@ -979,9 +979,9 @@
         "id": 27000012
     },
     {
-        "sc_key": "goblin-drill",
+        "key": "goblin-drill",
         "name": "Goblin Drill",
-        "key": "GoblinDrill",
+        "sc_key": "GoblinDrill",
         "elixir": 4,
         "type": "Building",
         "rarity": "Epic",
@@ -990,9 +990,9 @@
         "id": 27000013
     },
     {
-        "sc_key": "fireball",
+        "key": "fireball",
         "name": "Fireball",
-        "key": "Fireball",
+        "sc_key": "Fireball",
         "elixir": 4,
         "type": "Spell",
         "rarity": "Rare",
@@ -1001,9 +1001,9 @@
         "id": 28000000
     },
     {
-        "sc_key": "arrows",
+        "key": "arrows",
         "name": "Arrows",
-        "key": "Arrows",
+        "sc_key": "Arrows",
         "elixir": 3,
         "type": "Spell",
         "rarity": "Common",
@@ -1012,9 +1012,9 @@
         "id": 28000001
     },
     {
-        "sc_key": "rage",
+        "key": "rage",
         "name": "Rage",
-        "key": "Rage",
+        "sc_key": "Rage",
         "elixir": 2,
         "type": "Spell",
         "rarity": "Epic",
@@ -1023,9 +1023,9 @@
         "id": 28000002
     },
     {
-        "sc_key": "rocket",
+        "key": "rocket",
         "name": "Rocket",
-        "key": "Rocket",
+        "sc_key": "Rocket",
         "elixir": 6,
         "type": "Spell",
         "rarity": "Rare",
@@ -1034,9 +1034,9 @@
         "id": 28000003
     },
     {
-        "sc_key": "goblin-barrel",
+        "key": "goblin-barrel",
         "name": "Goblin Barrel",
-        "key": "GoblinBarrel",
+        "sc_key": "GoblinBarrel",
         "elixir": 3,
         "type": "Spell",
         "rarity": "Epic",
@@ -1045,9 +1045,9 @@
         "id": 28000004
     },
     {
-        "sc_key": "freeze",
+        "key": "freeze",
         "name": "Freeze",
-        "key": "Freeze",
+        "sc_key": "Freeze",
         "elixir": 4,
         "type": "Spell",
         "rarity": "Epic",
@@ -1056,9 +1056,9 @@
         "id": 28000005
     },
     {
-        "sc_key": "mirror",
+        "key": "mirror",
         "name": "Mirror",
-        "key": "Mirror",
+        "sc_key": "Mirror",
         "elixir": 1,
         "type": "Spell",
         "rarity": "Epic",
@@ -1067,9 +1067,9 @@
         "id": 28000006
     },
     {
-        "sc_key": "lightning",
+        "key": "lightning",
         "name": "Lightning",
-        "key": "Lightning",
+        "sc_key": "Lightning",
         "elixir": 6,
         "type": "Spell",
         "rarity": "Epic",
@@ -1078,9 +1078,9 @@
         "id": 28000007
     },
     {
-        "sc_key": "zap",
+        "key": "zap",
         "name": "Zap",
-        "key": "Zap",
+        "sc_key": "Zap",
         "elixir": 2,
         "type": "Spell",
         "rarity": "Common",
@@ -1089,9 +1089,9 @@
         "id": 28000008
     },
     {
-        "sc_key": "poison",
+        "key": "poison",
         "name": "Poison",
-        "key": "Poison",
+        "sc_key": "Poison",
         "elixir": 4,
         "type": "Spell",
         "rarity": "Epic",
@@ -1100,9 +1100,9 @@
         "id": 28000009
     },
     {
-        "sc_key": "graveyard",
+        "key": "graveyard",
         "name": "Graveyard",
-        "key": "Graveyard",
+        "sc_key": "Graveyard",
         "elixir": 5,
         "type": "Spell",
         "rarity": "Legendary",
@@ -1111,9 +1111,9 @@
         "id": 28000010
     },
     {
-        "sc_key": "the-log",
+        "key": "the-log",
         "name": "The Log",
-        "key": "Log",
+        "sc_key": "Log",
         "elixir": 2,
         "type": "Spell",
         "rarity": "Legendary",
@@ -1122,9 +1122,9 @@
         "id": 28000011
     },
     {
-        "sc_key": "tornado",
+        "key": "tornado",
         "name": "Tornado",
-        "key": "Tornado",
+        "sc_key": "Tornado",
         "elixir": 3,
         "type": "Spell",
         "rarity": "Epic",
@@ -1133,9 +1133,9 @@
         "id": 28000012
     },
     {
-        "sc_key": "clone",
+        "key": "clone",
         "name": "Clone",
-        "key": "Clone",
+        "sc_key": "Clone",
         "elixir": 3,
         "type": "Spell",
         "rarity": "Epic",
@@ -1144,9 +1144,9 @@
         "id": 28000013
     },
     {
-        "sc_key": "earthquake",
+        "key": "earthquake",
         "name": "Earthquake",
-        "key": "Earthquake",
+        "sc_key": "Earthquake",
         "elixir": 3,
         "type": "Spell",
         "rarity": "Rare",
@@ -1155,9 +1155,9 @@
         "id": 28000014
     },
     {
-        "sc_key": "barbarian-barrel",
+        "key": "barbarian-barrel",
         "name": "Barbarian Barrel",
-        "key": "BarbLog",
+        "sc_key": "BarbLog",
         "elixir": 2,
         "type": "Spell",
         "rarity": "Epic",
@@ -1166,9 +1166,9 @@
         "id": 28000015
     },
     {
-        "sc_key": "heal-spirit",
+        "key": "heal-spirit",
         "name": "Heal Spirit",
-        "key": "Heal",
+        "sc_key": "Heal",
         "elixir": 1,
         "type": "Troop",
         "rarity": "Rare",
@@ -1177,9 +1177,9 @@
         "id": 28000016
     },
     {
-        "sc_key": "giant-snowball",
+        "key": "giant-snowball",
         "name": "Giant Snowball",
-        "key": "Snowball",
+        "sc_key": "Snowball",
         "elixir": 2,
         "type": "Spell",
         "rarity": "Common",
@@ -1188,9 +1188,9 @@
         "id": 28000017
     },
     {
-        "sc_key": "royal-delivery",
+        "key": "royal-delivery",
         "name": "Royal Delivery",
-        "key": "RoyalDelivery",
+        "sc_key": "RoyalDelivery",
         "elixir": 3,
         "type": "Spell",
         "rarity": "Common",
