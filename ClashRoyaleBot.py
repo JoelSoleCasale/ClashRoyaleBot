@@ -75,15 +75,20 @@ def main():
     wins, loses, total_crowns = 0, 0, 0
     t_end = time.time() + 3600
     for i in range(1):
-        start_game('practice')
         strat_2()
+        start_game('practice')
         exit_game()
 
+game = GameBoard()
+@timing
 def test():
-    game = GameBoard()
     game.update_enemy_pos()
     enemies = game.enemy_pos()
     print(enemies)
+    for e in enemies:
+        pg.moveTo((int(e[0])+5, int(e[1])+16))
+        print(pg.pixel(int(e[0])+5, int(e[1])+16))
+        time.sleep(1)
 
 if __name__ == '__main__':
     test()

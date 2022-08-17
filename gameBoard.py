@@ -8,6 +8,28 @@ import os
 Pos = Tuple[int, int]
 TimeStamp = int
 
+CARDS_STATS = json.load(open('useful_cards_stats.json'))
+
+class Card:
+    '''A card class that contains all the information for each card'''
+    stats: dict # all the card stats
+
+    def __init__(self, card_name: str) -> None:
+        self.stats = CARDS_STATS.get(card_name)
+        assert self.stats is not None, f'the card with name: {card_name} has not been found'
+        self._check_stats()
+    
+    def show_stats(self):
+        print(f"Name: {self.stats['name']}\n")
+        for stat, value in self.stats.items():
+            print(f"{stat}: {value}")
+    
+    def _check_stats(self):
+        '''checks if all the required stats exists'''
+        REQ_STATS = ["name", "elixir"]
+        for stat in REQ_STATS:
+            assert self.stats[stat] is not None, f"missing {stat} stat in {self.stats['key']}"
+
 class GameBoard:
     '''A class that contains all the information avaliable about the current state of the game board
     during a match'''
@@ -85,14 +107,14 @@ class GameBoard:
         pos = []
         im1 = pg.screenshot(region=reg) #game region
         for level in self._LEVELS:
-            for x in list(pg.locateAll(level, im1, confidence=.95)):
+            for x in list(pg.locateAll(level, im1, grayscale=True, confidence=.9)):
                 x1 = (x[0]+reg[0], x[1]+reg[1])
-                if pos:
-                    x0 = pos[-1]
-                    if not(x0[0]<= x1[0] <= x0[0] + 15) and not(x0[1]<= x1[1] <= x0[1] + 15):
-                        pos.append(x1)
-                else:
-                    pos.append(x1)
+                # if pos:
+                #     x0 = pos[-1]
+                #     if not(x0[0] - 15 <= x1[0] <= x0[0] + 15) and not(x0[1] - 15 <= x1[1] <= x0[1] + 15):
+                #         pos.append(x1)
+                # else:
+                pos.append(x1)
         self._enemy_positions = pos
 
     def enemy_pos(self) -> List[Pos]:
