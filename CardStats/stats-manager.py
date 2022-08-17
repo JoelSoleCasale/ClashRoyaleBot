@@ -3,8 +3,8 @@ import json
 def generate_useful_info() -> dict():
     '''picks the useful information about each card from the cards_stats.json and cards.json files
     and generates a new json file'''
-    CARDS_STATS = json.load(open('cards_stats.json'))
-    CARDS_BASICS = json.load(open('cards.json'))
+    CARDS_STATS = json.load(open('CardStats/cards_stats.json'))
+    CARDS_BASICS = json.load(open('CardStats/cards.json'))
     card_names = [card['name'] for card in CARDS_BASICS]
     cards_dict = {card:dict() for card in card_names}
 
@@ -50,7 +50,7 @@ def generate_useful_info() -> dict():
 
 def main():
     info = generate_useful_info()
-    with open('useful_cards_stats.json', 'w') as ucs:
+    with open('CardStats/useful_cards_stats.json', 'w') as ucs:
         json.dump(info, ucs, sort_keys=True, indent=4)
 
 if __name__ == '__main__':

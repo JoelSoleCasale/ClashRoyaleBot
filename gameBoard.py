@@ -8,7 +8,7 @@ import os
 Pos = Tuple[int, int]
 TimeStamp = int
 
-CARDS_STATS = json.load(open('useful_cards_stats.json'))
+CARDS_STATS = json.load(open('CardStats/useful_cards_stats.json'))
 
 class Card:
     '''A card class that contains all the information for each card'''
