@@ -64,7 +64,7 @@ def strat_2():
     # The game started
     while not game.game_ended():
         game.update_deck()
-        game.update_enemy_pos()
+        game.update_enemies()
         game.update_elixir()
         card_scores = [UNKNOWN_SCORE for i in range(4)]
         for i in range(4):
@@ -91,8 +91,8 @@ def enemy_pos_test():
     game = GameBoard()
     while(True):
         wait_for_key('a')
-        game.update_enemy_pos()
-        enemies = game.enemy_pos()
+        game.update_enemies()
+        enemies = game.enemies_pos()
         print(enemies)
         for e in enemies:
             pg.moveTo((int(e[0]), int(e[1])))

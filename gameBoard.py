@@ -101,7 +101,7 @@ class GameBoard:
         print(f"Deck cards: {[card.name if card is not None else 'None' for card in self.deck_cards ]}")
         print(f"Next cards: {[card.name if card is not None else 'None' for card in self.next_cards ]}")
 
-    def update_enemy_pos(self, reg=(930, 160, 670, 915)) -> None:
+    def update_enemies(self, reg=(930, 160, 670, 915)) -> None:
         '''updates all the enemy positions in a certain region,
         by default the region is all the screen'''
         pos = []
@@ -120,7 +120,7 @@ class GameBoard:
                         pos.append(x1)
         self._enemy_positions = pos
 
-    def enemy_pos(self) -> List[Pos]:
+    def enemies_pos(self) -> List[Pos]:
         '''returns a list of all the enemy positions in screen,
         must be updated with the "update_enemy_pos" function'''
         return self._enemy_positions
