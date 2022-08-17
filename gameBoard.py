@@ -57,7 +57,7 @@ class GameBoard:
         self._game_multiplier = 1
         self._game_start_time = time.time()
 
-        self._LEVELS = ['EnemyLevels/' + x for x in os.listdir('EnemyLevels') if x[-4:] == '.png']
+        self._LEVELS = ['EnemyLevels1080p/' + x for x in os.listdir('EnemyLevels1080p') if x[-4:] == '.png']
 
     def update_elixir(self) -> int:
         '''updates the current elixir in game and returns it'''
@@ -107,14 +107,17 @@ class GameBoard:
         pos = []
         im1 = pg.screenshot(region=reg) #game region
         for level in self._LEVELS:
-            for x in list(pg.locateAll(level, im1, grayscale=True, confidence=.9)):
+            for x in list(pg.locateAll(level, im1, grayscale=True, confidence=.8)):
                 x1 = (x[0]+reg[0], x[1]+reg[1])
-                # if pos:
-                #     x0 = pos[-1]
-                #     if not(x0[0] - 15 <= x1[0] <= x0[0] + 15) and not(x0[1] - 15 <= x1[1] <= x0[1] + 15):
-                #         pos.append(x1)
-                # else:
-                pos.append(x1)
+                add = True
+                for x0 in pos:
+                    if (x0[0] - 15 <= x1[0] <= x0[0] + 15) and (x0[1] - 15 <= x1[1] <= x0[1] + 15):
+                        add = False
+                        break
+                if add:
+                    p = pg.pixel(int(x1[0])+ 5, int(x1[1]) + 13)
+                    if p[0] > 80 and p[2] < 80: #check if the card corresponds to an enemy one
+                        pos.append(x1)
         self._enemy_positions = pos
 
     def enemy_pos(self) -> List[Pos]:

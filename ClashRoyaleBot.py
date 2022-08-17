@@ -79,16 +79,25 @@ def main():
         start_game('practice')
         exit_game()
 
-game = GameBoard()
+def wait_for_key(k):
+    '''waits until the key k is pressed, used for debugging'''
+    while(keyboard.is_pressed(k) is False):
+        time.sleep(.05)
+    while(keyboard.is_pressed(k) is True):
+        time.sleep(.05)
+
 @timing
-def test():
-    game.update_enemy_pos()
-    enemies = game.enemy_pos()
-    print(enemies)
-    for e in enemies:
-        pg.moveTo((int(e[0])+5, int(e[1])+16))
-        print(pg.pixel(int(e[0])+5, int(e[1])+16))
-        time.sleep(1)
+def enemy_pos_test():
+    game = GameBoard()
+    while(True):
+        wait_for_key('a')
+        game.update_enemy_pos()
+        enemies = game.enemy_pos()
+        print(enemies)
+        for e in enemies:
+            pg.moveTo((int(e[0]), int(e[1])))
+            print(pg.pixel(int(e[0])+5, int(e[1])+13))
+            time.sleep(.5)
 
 if __name__ == '__main__':
-    test()
+    enemy_pos_test()

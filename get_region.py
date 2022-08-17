@@ -21,13 +21,14 @@ def get_pos():
     while(keyboard.is_pressed('a') is False):
         time.sleep(.05)
     p1 = pg.position()
-    print(f"({p1[0]}, {p1[1]}), ", end='')
+    print(f"({p1[0]}, {p1[1]}), ")
     while(keyboard.is_pressed('a') is True):
         time.sleep(.05)
 
 def main():
-    for i in range(1):
+    for i in range(17, 1000):
         get_pos()
+        im = pg.screenshot(f'TestImages/sample{i}.png')
 
 if __name__ == '__main__':
     main()
