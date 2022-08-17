@@ -1,4 +1,5 @@
-from turtle import width
+#Debugging script to esasly get regions and positions on screen
+
 import pyautogui as pg
 import keyboard
 import time
@@ -26,9 +27,7 @@ def get_pos():
         time.sleep(.05)
 
 def main():
-    for i in range(17, 1000):
-        get_pos()
-        im = pg.screenshot(f'TestImages/sample{i}.png')
+    get_region()
 
 if __name__ == '__main__':
     main()

@@ -1,6 +1,7 @@
-from typing import List, Optional, Tuple
+from typing import Callable, List, Optional, Tuple, Type
 import pyautogui as pg
 import keyboard
+import win32gui
 import json
 import time
 import os
@@ -10,14 +11,24 @@ TimeStamp = int
 
 CARDS_STATS = json.load(open('CardStats/useful_cards_stats.json'))
 
+# Class definitions
+class GameBoard: ...
+class Card: ...
+
 class Card:
     '''A card class that contains all the information for each card'''
     stats: dict # all the card stats
 
-    def __init__(self, card_name: str) -> None:
+    _score_func: Callable[[GameBoard], int] # a custom score for each card to determine how good would be to play that card with a ceratain GameBoard
+    _place_func: Callable[[GameBoard], Pos] # returns the best place to place that card in a certain GameBoard
+
+    def __init__(self, card_name: str, score_func1: Callable[[Card, GameBoard], int], place_func1: Callable[[GameBoard], Pos]) -> None:
         self.stats = CARDS_STATS.get(card_name)
         assert self.stats is not None, f'the card with name: {card_name} has not been found'
         self._check_stats()
+
+        self._score_func = score_func1
+        self._place_func = place_func1
     
     def show_stats(self):
         print(f"Name: {self.stats['name']}\n")
@@ -29,6 +40,14 @@ class Card:
         REQ_STATS = ["name", "elixir"]
         for stat in REQ_STATS:
             assert self.stats[stat] is not None, f"missing {stat} stat in {self.stats['key']}"
+    
+    def score(self, game: GameBoard) -> int:
+        '''returns an arbitary score about how good is to play this card in a certain gameboard'''
+        return self._score_func(self, game)
+    
+    def place_in_board(self, game: GameBoard) -> Pos:
+        '''returns the best position to place this card in a certain gameboard'''
+        return self._place_func(self, game)
 
 class GameBoard:
     '''A class that contains all the information avaliable about the current state of the game board
@@ -82,8 +101,8 @@ class GameBoard:
         '''updates the None cards in the deck with the current cards if there remains unknown cards'''
         if self._known_cards == 8:
             return None
-        FIRST_CARD_REG = [1060, 1175, 120, 130]
-        SPACE_BETWEEN_CARDS = 145
+        FIRST_CARD_REG = [140, 930, 95, 90]
+        SPACE_BETWEEN_CARDS = 113
         CARDS = os.listdir('Cards')
         for p in range(4):
             if self.deck_cards[p] is None:
@@ -137,6 +156,13 @@ class GameBoard:
         self.deck_cards[index] = self.next_cards[0]
         self.next_cards.pop(0)
         self.next_cards.append(card)
+
+    def _get_window_rect(name="BlueStacks App Player") -> List[int]:
+        '''returns a list with the coordinates and dimensions, returns [x, y, w, h]'''
+        rect = list(win32gui.GetWindowRect(win32gui.FindWindow(None, "BlueStacks App Player")))
+        rect[2] -= rect[0]
+        rect[3] -= rect[1]
+        return rect
 
     def game_ended(self) -> bool:
         '''returns if the game has ended or not'''

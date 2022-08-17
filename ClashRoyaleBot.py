@@ -59,24 +59,30 @@ def strat_2():
     MINIMUM_SCORE = 200 # minimum score to place a card
 
     game = GameBoard()
-    while game.update_elixir() < 7:
-        time.sleep(.1)
-    # The game started
-    while not game.game_ended():
-        game.update_deck()
-        game.update_enemies()
-        game.update_elixir()
-        card_scores = [UNKNOWN_SCORE for i in range(4)]
-        for i in range(4):
-            if game.deck_cards[i] is not None:
-                card_scores[i] 
+    print(game._get_window_rect())
+    # while game.update_elixir() < 7:
+    #     time.sleep(.1)
+    # # The game started
+    # while not game.game_ended():
+    #     game.update_deck()
+    #     game.update_enemies()
+    #     game.update_elixir()
+    #     card_scores = [UNKNOWN_SCORE for i in range(4)]
+    #     for i in range(4):
+    #         if game.deck_cards[i] is not None:
+    #             card_scores[i] = CARDS_DICT[game.deck_cards[i]].score(game)
+        
+    #     card_to_play = game.deck_cards[card_scores.index(max(card_scores))] if max(card_scores) > MINIMUM_SCORE else None
+    #     if card_to_play is not None:
+    #         pos = CARDS_DICT[game.deck_cards[i]].place_in_board(game)
+    #         game.place_card(game.deck_cards[i], pos)
 
 def main():
     wins, loses, total_crowns = 0, 0, 0
     t_end = time.time() + 3600
     for i in range(1):
-        strat_2()
         start_game('practice')
+        strat_2()
         exit_game()
 
 def wait_for_key(k):
@@ -100,4 +106,4 @@ def enemy_pos_test():
             time.sleep(.5)
 
 if __name__ == '__main__':
-    enemy_pos_test()
+    main()
