@@ -1,9 +1,5 @@
 # Information for how to play each card of the deck
-from dataclasses import dataclass
-from typing import Optional, Tuple, List
-import json
-
-Pos = Tuple[int, int]
+from gameBoard import *
 
 CARDS_STATS = json.load(open('useful_cards_stats.json'))
 
@@ -26,9 +22,9 @@ class Card:
         for stat in REQ_STATS:
             assert self.stats[stat] is not None, f"missing {stat} stat in {self.stats['key']}"
 
+
 BarbarianHut = Card('Barbarian Hut')
 ElixirCollector = Card('Elixir Collector')
-ElixirCollector.show_stats()
 Furnace = Card('Furnace')
 GoblinHut = Card('Goblin Hut')
 IceWizard = Card('Ice Wizard')

@@ -1,48 +1,12 @@
-from argparse import ONE_OR_MORE
-from typing import List, Optional
-from typing_extensions import TypeAlias
+from typing import List, Optional, Tuple
 import pyautogui as pg
-import random
 import keyboard
+import json
 import time
 import os
-from CRCards2 import *
 
-#=======REGIONS=======#
-SCREEN_REG = (930, 160, 670, 915)
-L_REG = (930, 160, 335, 915)
-R_REG = (1265, 160, 335, 915)
-LOW_L_REG = (937, 467, 328, 582)
-LOW_R_REG = (1263, 466, 327, 593)
-
-TimeStamp = float
-
-def timing(f):
-    def wrap(*args, **kwargs):
-        time1 = time.time()
-        ret = f(*args, **kwargs)
-        time2 = time.time()
-        print('{:s} function took {:.3f} ms'.format(
-            f.__name__, (time2-time1)*1000.0))
-
-        return ret
-    return wrap
-
-def start_game(gamemode: str = 'showdown') -> None:
-    '''starts a game in a certain gamemode, can be: showdown, special, practice, or normal'''
-    clicks: List[Pos]
-    if gamemode == 'showdown':
-        clicks = [(1419, 939), (1445, 1008), (1262, 895)]
-    elif gamemode == 'special':
-        clicks = [(1415, 934), (1446, 650), (1262, 895)]
-    elif gamemode == 'practice':
-        clicks = [(1587, 180), (1347, 483), (1407, 818)]
-    elif gamemode == 'normal':
-        clicks = [(1123, 947), (1262, 895)]
-    assert clicks
-    for click in clicks:
-        pg.moveTo(click, duration=.15)
-        pg.click()
+Pos = Tuple[int, int]
+TimeStamp = int
 
 class GameBoard:
     '''A class that contains all the information avaliable about the current state of the game board
@@ -50,9 +14,9 @@ class GameBoard:
 
     _LEVELS: List[str] # a list of all the levels images to ckeck
 
-    deck_cards: List[Optional[Card]] # actual cards in deck
+    deck_cards: List[Optional[str]] # actual cards in deck
     _known_cards: int # the known cards from the deck
-    next_cards: List[Optional[Card]] # next cards to come
+    next_cards: List[Optional[str]] # next cards to come
 
     _elixir: int # acutal elixir
 
@@ -60,7 +24,7 @@ class GameBoard:
     _game_multiplier: float # game elixir multiplier
 
     _enemy_positions: List[Pos] # a list with all the enemy positions in the board
-    _used_cards: List[Tuple[TimeStamp, Card, Pos]] # a log with each card that has been used the moment, where and when
+    _used_cards: List[Tuple[TimeStamp, str, Pos]] # a log with each card that has been used the moment, where and when
 
     def __init__(self):
         self.deck_cards = [None for i in range(4)]
@@ -106,7 +70,7 @@ class GameBoard:
                 im = pg.screenshot(region=card_reg) #card region
                 for card in CARDS:
                     if pg.locate('Cards/' + card, im, grayscale=True, confidence=.93) is not None:
-                        self.deck_cards[p] = CARDS_DICT[card[:-4]] # to remove the final ".png"
+                        self.deck_cards[p] = card[:-4] # to remove the final ".png"
                         self._known_cards += 1
                         break
 
@@ -136,7 +100,7 @@ class GameBoard:
         must be updated with the "update_enemy_pos" function'''
         return self._enemy_positions
 
-    def place_card(self, card: Card, pos: Pos) -> None: 
+    def place_card(self, card: str, pos: Pos) -> None: 
         '''places a card from the deck in a certain position on the board'''
         index = self.deck_cards.index(card)
         assert 0 <= index < 4 
@@ -155,65 +119,18 @@ class GameBoard:
         im = pg.screenshot(region=END_GAME_REG)
         return pg.locate("end-game1.png", im, confidence=.9) is not None or keyboard.is_pressed('ç')
 
-def get_crowns(enemy: bool) -> int:
-    '''returns the enemy or ally crowns, True for enemy, False for ally'''
-    if enemy:
-        pixels = [(1082, 341), (1260, 325), (1437, 342)]
-        for i in range(3):
-            if pg.pixel(pixels[i][0], pixels[i][1])[1] < 120:
-                return i
-        return 3
-    else:
-        pixels = [(1085, 743), (1263, 724), (1441, 744)]
-        for i in range(3):
-            if pg.pixel(pixels[i][0], pixels[i][1])[0] < 200:
-                return i
-        return 3
-
-def exit_game():
-    pg.moveTo(1270, 1200, .1)
-    pg.click()
-    time.sleep(4)
-
-def check_maestry_rewards():
-    if pg.pixel(1070, 1390)[0] > 200:
-        seq = [(1070, 1390), (1587, 1039), (1031, 435), (1274, 734), (1264, 919), (1269, 735), (1293, 908), (1285, 728), (1273, 912), (1250, 727), (1249, 911), (1240, 725), (1253, 883), (1253, 740), (1276, 914), (1575, 224), (1566, 267), (1329, 1335)]
-        for action in seq:
-            pg.moveTo(action, duration=.3)
-            pg.click()
-
-def strat_2():
-    UNKNOWN_SCORE = 100 # the score of an unknown card
-    MINIMUM_SCORE = 200 # minimum score to place a card
-
-    game = GameBoard()
-    while game.update_elixir() < 7:
-        time.sleep(.1)
-    # The game started
-    while not game.game_ended():
-        game.update_deck()
-        game.update_enemy_pos()
-        game.update_elixir()
-        card_scores = [UNKNOWN_SCORE for i in range(4)]
-        for i in range(4):
-            if game.deck_cards[i] is not None:
-                card_scores[i] 
-
-def main():
-    wins, loses, total_crowns = 0, 0, 0
-    t_end = time.time() + 3600
-    for i in range(1):
-        start_game('practice')
-        strat_2()
-        exit_game()
-
-def test():
-    game = GameBoard()
-    enemies = game.enemy_pos()
-    print(enemies)
-    for enemy in enemies:
-        pg.moveTo(enemy)
-        time.sleep(1)
-
-if __name__ == '__main__':
-    test()
+    def get_crowns(enemy: bool) -> int:
+        '''returns the enemy or ally crowns, True for enemy, False for ally
+        prec: the game must have ended'''
+        if enemy:
+            pixels = [(1082, 341), (1260, 325), (1437, 342)]
+            for i in range(3):
+                if pg.pixel(pixels[i][0], pixels[i][1])[1] < 120:
+                    return i
+            return 3
+        else:
+            pixels = [(1085, 743), (1263, 724), (1441, 744)]
+            for i in range(3):
+                if pg.pixel(pixels[i][0], pixels[i][1])[0] < 200:
+                    return i
+            return 3
