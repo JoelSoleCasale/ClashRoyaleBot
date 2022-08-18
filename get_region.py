@@ -22,12 +22,15 @@ def get_pos():
     while(keyboard.is_pressed('a') is False):
         time.sleep(.05)
     p1 = pg.position()
-    print(f"({p1[0]}, {p1[1]}), ")
+    px = pg.pixel(p1[0], p1[1])
+    print(f"({p1[0]}, {p1[1]}), ", end="")
+    # print(f"[({p1[0]}, {p1[1]}), ({px[0]}, {px[1]}, {px[2]})], ", end="")
     while(keyboard.is_pressed('a') is True):
         time.sleep(.05)
 
 def main():
-    get_region()
+    for i in range(1):
+        get_pos()
 
 if __name__ == '__main__':
     main()

@@ -6,15 +6,6 @@ import time
 import os
 from CRCards2 import *
 
-#=======REGIONS=======#
-SCREEN_REG = (930, 160, 670, 915)
-L_REG = (930, 160, 335, 915)
-R_REG = (1265, 160, 335, 915)
-LOW_L_REG = (937, 467, 328, 582)
-LOW_R_REG = (1263, 466, 327, 593)
-
-TimeStamp = float
-
 def timing(f):
     def wrap(*args, **kwargs):
         time1 = time.time()
@@ -26,26 +17,37 @@ def timing(f):
         return ret
     return wrap
 
+def get_window_rect(name="BlueStacks App Player") -> List[int]:
+        '''returns a list with the coordinates and dimensions, returns [x, y, w, h]'''
+        rect = list(win32gui.GetWindowRect(win32gui.FindWindow(None, "BlueStacks App Player")))
+        rect[2] -= rect[0]
+        rect[3] -= rect[1]
+        return rect
+
+def move_and_click(pos: Pos, t: float):
+    '''moves the mouse in a certain position of the game window and clicks it, then waits t time'''
+    win_rec = get_window_rect()
+    pg.moveTo(pos[0]+win_rec[0], pos[1]+win_rec[1])
+    pg.click()
+    time.sleep(t)
+
 def start_game(gamemode: str = 'showdown') -> None:
     '''starts a game in a certain gamemode, can be: showdown, special, practice, or normal'''
     clicks: List[Pos]
     if gamemode == 'showdown':
-        clicks = [(1419, 939), (1445, 1008), (1262, 895)]
+        clicks = [(429, 737), (434, 794), (307, 734)]
     elif gamemode == 'special':
-        clicks = [(1415, 934), (1446, 650), (1262, 895)]
+        clicks = [(403, 738), (440, 519), (307, 734)]
     elif gamemode == 'practice':
-        clicks = [(1587, 180), (1347, 483), (1407, 818)]
+        clicks = [(556, 149), (375, 386), (413, 657)]
     elif gamemode == 'normal':
-        clicks = [(1123, 947), (1262, 895)]
+        clicks = [(180, 745), (307, 734)]
     assert clicks
     for click in clicks:
-        pg.moveTo(click, duration=.15)
-        pg.click()
+        move_and_click(click, .15)
 
 def exit_game():
-    pg.moveTo(1270, 1200, .1)
-    pg.click()
-    time.sleep(4)
+    move_and_click((304, 958), 4)
 
 def check_maestry_rewards():
     if pg.pixel(1070, 1390)[0] > 200:
@@ -59,23 +61,27 @@ def strat_2():
     MINIMUM_SCORE = 200 # minimum score to place a card
 
     game = GameBoard()
-    print(game._get_window_rect())
-    # while game.update_elixir() < 7:
-    #     time.sleep(.1)
-    # # The game started
-    # while not game.game_ended():
-    #     game.update_deck()
-    #     game.update_enemies()
-    #     game.update_elixir()
-    #     card_scores = [UNKNOWN_SCORE for i in range(4)]
-    #     for i in range(4):
-    #         if game.deck_cards[i] is not None:
-    #             card_scores[i] = CARDS_DICT[game.deck_cards[i]].score(game)
+    while game.update_elixir() < 7:
+        time.sleep(.1)
+    # The game started
+    t1 = time.time()
+    while not game.game_ended():
+        game.update_deck()
+        game.update_enemies()
+        game.update_elixir()
+        card_scores = [UNKNOWN_SCORE for i in range(4)]
+        for i in range(4):
+            if game.deck_cards[i] is not None:
+                card_scores[i] = CARDS_DICT[game.deck_cards[i]].score(game)
         
-    #     card_to_play = game.deck_cards[card_scores.index(max(card_scores))] if max(card_scores) > MINIMUM_SCORE else None
-    #     if card_to_play is not None:
-    #         pos = CARDS_DICT[game.deck_cards[i]].place_in_board(game)
-    #         game.place_card(game.deck_cards[i], pos)
+        print(card_scores)
+        max_index = card_scores.index(max(card_scores))
+        card_to_play = game.deck_cards[max_index] if max(card_scores) > MINIMUM_SCORE else None
+        if card_to_play is not None:
+            pos = CARDS_DICT[game.deck_cards[max_index]].place_in_board(game)
+            game.place_card(game.deck_cards[max_index], pos)
+        print(f"Iteration time: {time.time()-t1}")
+        t1 = time.time()
 
 def main():
     wins, loses, total_crowns = 0, 0, 0
@@ -106,4 +112,4 @@ def enemy_pos_test():
             time.sleep(.5)
 
 if __name__ == '__main__':
-    main()
+    exit_game()

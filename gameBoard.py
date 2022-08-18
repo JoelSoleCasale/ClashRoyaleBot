@@ -7,7 +7,7 @@ import time
 import os
 
 Pos = Tuple[int, int]
-TimeStamp = int
+TimeStamp = float
 
 CARDS_STATS = json.load(open('CardStats/useful_cards_stats.json'))
 
@@ -51,7 +51,7 @@ class Card:
 
 class GameBoard:
     '''A class that contains all the information avaliable about the current state of the game board
-    during a match'''
+    during a match. Controls all the actions and information inside a match'''
 
     _LEVELS: List[str] # a list of all the levels images to ckeck
 
@@ -75,13 +75,15 @@ class GameBoard:
 
         self._game_multiplier = 1
         self._game_start_time = time.time()
+        self._used_cards = []
 
         self._LEVELS = ['EnemyLevels1080p/' + x for x in os.listdir('EnemyLevels1080p') if x[-4:] == '.png']
 
     def update_elixir(self) -> int:
         '''updates the current elixir in game and returns it'''
-        FIRST_PIXEL = (1135, 1370) # first pixel to check
-        ELIXIR_SPACE_BETWEEN = 50 # space between pixels to check
+        win_rec = self._get_window_rect()
+        FIRST_PIXEL = (202+win_rec[0], 1081+win_rec[1]) # first pixel to check
+        ELIXIR_SPACE_BETWEEN = 42 # space between pixels to check
         for i in range(10):
             if pg.pixel(FIRST_PIXEL[0]+i*ELIXIR_SPACE_BETWEEN, FIRST_PIXEL[1])[0] < 150:
                 self._elixir = i
@@ -101,16 +103,17 @@ class GameBoard:
         '''updates the None cards in the deck with the current cards if there remains unknown cards'''
         if self._known_cards == 8:
             return None
-        FIRST_CARD_REG = [140, 930, 95, 90]
+        win_rec = self._get_window_rect() # para tener en cuenta la posición inicial de la ventana
+        FIRST_CARD_REG = [142 + win_rec[0], 930 + win_rec[1], 95, 90]
         SPACE_BETWEEN_CARDS = 113
-        CARDS = os.listdir('Cards')
+        CARDS = os.listdir('Cards1080p')
         for p in range(4):
             if self.deck_cards[p] is None:
-                card_reg = FIRST_CARD_REG
+                card_reg = FIRST_CARD_REG.copy()
                 card_reg[0] = FIRST_CARD_REG[0] + p*SPACE_BETWEEN_CARDS
                 im = pg.screenshot(region=card_reg) #card region
                 for card in CARDS:
-                    if pg.locate('Cards/' + card, im, grayscale=True, confidence=.93) is not None:
+                    if pg.locate('Cards1080p/' + card, im, grayscale=True, confidence=.75) is not None:
                         self.deck_cards[p] = card[:-4] # to remove the final ".png"
                         self._known_cards += 1
                         break
@@ -120,18 +123,19 @@ class GameBoard:
         print(f"Deck cards: {[card.name if card is not None else 'None' for card in self.deck_cards ]}")
         print(f"Next cards: {[card.name if card is not None else 'None' for card in self.next_cards ]}")
 
-    def update_enemies(self, reg=(930, 160, 670, 915)) -> None:
+    def update_enemies(self, reg=(47, 142, 515, 704)) -> None:
         '''updates all the enemy positions in a certain region,
         by default the region is all the screen'''
+        win_rec = self._get_window_rect()
         pos = []
-        im1 = pg.screenshot(region=reg) #game region
+        im1 = pg.screenshot(region=(reg[0]+win_rec[0], reg[1]+win_rec[1], reg[2], reg[3])) #game region
         for level in self._LEVELS:
             for x in list(pg.locateAll(level, im1, grayscale=True, confidence=.8)):
                 x1 = (x[0]+reg[0], x[1]+reg[1])
                 add = True
                 for x0 in pos:
                     if (x0[0] - 15 <= x1[0] <= x0[0] + 15) and (x0[1] - 15 <= x1[1] <= x0[1] + 15):
-                        add = False
+                        add = False #to avoid detecting twice the same enemy
                         break
                 if add:
                     p = pg.pixel(int(x1[0])+ 5, int(x1[1]) + 13)
@@ -148,8 +152,9 @@ class GameBoard:
         '''places a card from the deck in a certain position on the board'''
         index = self.deck_cards.index(card)
         assert 0 <= index < 4 
+        win_rec = self._get_window_rect()
         pg.press(str(index+1))
-        pg.moveTo(pos, duration=.1)
+        pg.moveTo(pos[0]+win_rec[0], pos[1]+win_rec[1], duration=.1)
         pg.click()
         self._used_cards.append((self.passed_time(), card, pos))
         # we update the deck:
@@ -166,9 +171,13 @@ class GameBoard:
 
     def game_ended(self) -> bool:
         '''returns if the game has ended or not'''
-        END_GAME_REG = (917, 656, 687, 285)
-        im = pg.screenshot(region=END_GAME_REG)
-        return pg.locate("end-game1.png", im, confidence=.9) is not None or keyboard.is_pressed('ç')
+        #checks 8 pixels and their color to determine if the game has ended
+        win_rec = self._get_window_rect()
+        check_pos = [[(70, 615), (36, 94, 172)], [(69, 664), (39, 100, 185)], [(545, 611), (24, 67, 120)], [(545, 665), (27, 78, 144)], [(68, 313), (153, 12, 64)], [(69, 365), (158, 12, 64)], [(543, 317), (107, 8, 44)], [(542, 365), (120, 10, 52)]]
+        for pos in check_pos:
+            if not pg.pixelMatchesColor(pos[0][0]+win_rec[0], pos[0][1]+win_rec[1], pos[1], 10):
+                return False
+        return True
 
     def get_crowns(enemy: bool) -> int:
         '''returns the enemy or ally crowns, True for enemy, False for ally

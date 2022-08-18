@@ -1,13 +1,14 @@
 # Information for how to play each card of the deck
 from gameBoard import *
+import random
 
 def f1(c: Card, game: GameBoard):
     if game.get_elixir() > 8:
-        return 300
+        return random.randint(200, 300)
     return 100
 
 def f2(c: Card, game: GameBoard):
-    return (1000,1000)
+    return (random.randint(52, 558),823)
 
 BarbarianHut = Card('Barbarian Hut', f1, f2)
 ElixirCollector = Card('Elixir Collector', f1, f2)
@@ -20,6 +21,8 @@ Tombstone = Card('Tombstone', f1, f2)
 FireSpirit = Card('Fire Spirit', f1, f2)
 Bomber = Card('Bomber', f1, f2)
 MegaMinion = Card('Mega Minion', f1, f2)
+IceSpirit = Card('Ice Spirit', f1, f2)
+MiniPEKKA = Card('Mini P.E.K.K.A', f1, f2)
 
 #for each card name associates its card class
 CARDS_DICT = {
@@ -33,5 +36,7 @@ CARDS_DICT = {
     'Tombstone' : Tombstone,
     'FireSpirit' : FireSpirit,
     'Bomber' : Bomber,
-    'MegaMinion' : MegaMinion
+    'MegaMinion' : MegaMinion,
+    'IceSpirit' : IceSpirit,
+    'MiniPEKKA' : MiniPEKKA
 }
