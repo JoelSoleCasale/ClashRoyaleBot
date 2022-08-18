@@ -79,7 +79,8 @@ def strat_2():
         card_to_play = game.deck_cards[max_index] if max(card_scores) > MINIMUM_SCORE else None
         if card_to_play is not None:
             pos = CARDS_DICT[game.deck_cards[max_index]].place_in_board(game)
-            game.place_card(game.deck_cards[max_index], pos)
+            if pos is not None:
+                game.place_card(game.deck_cards[max_index], pos)
         print(f"Iteration time: {time.time()-t1}")
         t1 = time.time()
 
@@ -112,4 +113,4 @@ def enemy_pos_test():
             time.sleep(.5)
 
 if __name__ == '__main__':
-    exit_game()
+    enemy_pos_test()

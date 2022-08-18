@@ -22,7 +22,7 @@ class Card:
     _score_func: Callable[[GameBoard], int] # a custom score for each card to determine how good would be to play that card with a ceratain GameBoard
     _place_func: Callable[[GameBoard], Pos] # returns the best place to place that card in a certain GameBoard
 
-    def __init__(self, card_name: str, score_func1: Callable[[Card, GameBoard], int], place_func1: Callable[[GameBoard], Pos]) -> None:
+    def __init__(self, card_name: str, score_func1: Callable[[Card, GameBoard], int], place_func1: Callable[[GameBoard], Optional[Pos]]) -> None:
         self.stats = CARDS_STATS.get(card_name)
         assert self.stats is not None, f'the card with name: {card_name} has not been found'
         self._check_stats()
@@ -31,7 +31,8 @@ class Card:
         self._place_func = place_func1
     
     def show_stats(self):
-        print(f"Name: {self.stats['name']}\n")
+        print('-'*30)
+        print(f"==============Name: {self.stats['name']}==============")
         for stat, value in self.stats.items():
             print(f"{stat}: {value}")
     
@@ -45,8 +46,9 @@ class Card:
         '''returns an arbitary score about how good is to play this card in a certain gameboard'''
         return self._score_func(self, game)
     
-    def place_in_board(self, game: GameBoard) -> Pos:
-        '''returns the best position to place this card in a certain gameboard'''
+    def place_in_board(self, game: GameBoard) -> Optional[Pos]:
+        '''returns the best position to place this card in a certain gameboard.
+        returns None if the card cant be placed'''
         return self._place_func(self, game)
 
 class GameBoard:
@@ -138,7 +140,7 @@ class GameBoard:
                         add = False #to avoid detecting twice the same enemy
                         break
                 if add:
-                    p = pg.pixel(int(x1[0])+ 5, int(x1[1]) + 13)
+                    p = pg.pixel(int(x1[0])+ 5+win_rec[0], int(x1[1]) + 13+win_rec[1])
                     if p[0] > 80 and p[2] < 80: #check if the card corresponds to an enemy one
                         pos.append(x1)
         self._enemy_positions = pos
@@ -147,6 +149,9 @@ class GameBoard:
         '''returns a list of all the enemy positions in screen,
         must be updated with the "update_enemy_pos" function'''
         return self._enemy_positions
+    
+    def enemies_in_reg(self, reg) -> int:
+        '''returns the number on enemies in a certain region'''
 
     def place_card(self, card: str, pos: Pos) -> None: 
         '''places a card from the deck in a certain position on the board'''

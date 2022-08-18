@@ -40,3 +40,7 @@ CARDS_DICT = {
     'IceSpirit' : IceSpirit,
     'MiniPEKKA' : MiniPEKKA
 }
+
+if __name__ == '__main__':
+    for name, card in CARDS_DICT.items():
+        card.show_stats()
