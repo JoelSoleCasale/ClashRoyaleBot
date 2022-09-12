@@ -1,6 +1,7 @@
 from typing import Callable, List, Optional, Tuple, Type
 import pyautogui as pg
 import keyboard
+import threading
 import win32gui
 import json
 import time
@@ -38,9 +39,9 @@ class Card:
     
     def _check_stats(self):
         '''checks if all the required stats exists'''
-        REQ_STATS = ["name", "elixir"]
+        REQ_STATS = ["elixir"]
         for stat in REQ_STATS:
-            assert self.stats[stat] is not None, f"missing {stat} stat in {self.stats['key']}"
+            assert self.stats.get(stat) is not None, f"missing {stat} stat in {self.stats['key']}"
     
     def score(self, game: GameBoard) -> int:
         '''returns an arbitary score about how good is to play this card in a certain gameboard'''
@@ -103,8 +104,8 @@ class GameBoard:
 
     def update_deck(self) -> None:
         '''updates the None cards in the deck with the current cards if there remains unknown cards'''
-        if self._known_cards == 8:
-            return None
+        # if self._known_cards == 8:
+        #     return None
         win_rec = self._get_window_rect() # para tener en cuenta la posición inicial de la ventana
         FIRST_CARD_REG = [142 + win_rec[0], 930 + win_rec[1], 95, 90]
         SPACE_BETWEEN_CARDS = 113
@@ -150,8 +151,16 @@ class GameBoard:
         must be updated with the "update_enemy_pos" function'''
         return self._enemy_positions
     
-    def enemies_in_reg(self, reg) -> int:
-        '''returns the number on enemies in a certain region'''
+    def enemies_in_reg(self, reg: List[int]) -> int:
+        '''returns the number on enemies in a certain region of the map'''
+        tot = 0
+        for enemy in self.enemies_pos():
+            if reg[0]<=enemy[0]<=reg[0]+reg[2] and reg[1]<=enemy[1]<=reg[1]+reg[3]:
+                tot += 1
+        return tot
+
+    def update_card(self, index: int, card: str):
+        self.deck_cards[index] = card
 
     def place_card(self, card: str, pos: Pos) -> None: 
         '''places a card from the deck in a certain position on the board'''
@@ -163,7 +172,9 @@ class GameBoard:
         pg.click()
         self._used_cards.append((self.passed_time(), card, pos))
         # we update the deck:
-        self.deck_cards[index] = self.next_cards[0]
+        self.deck_cards[index] = None
+        time.sleep(.1)
+        threading.Timer(1.7, self.update_card, [index, self.next_cards[0]]).start() # the time the new card takes to arrive to the deck
         self.next_cards.pop(0)
         self.next_cards.append(card)
 
@@ -177,10 +188,12 @@ class GameBoard:
     def game_ended(self) -> bool:
         '''returns if the game has ended or not'''
         #checks 8 pixels and their color to determine if the game has ended
+        if self.passed_time() > 300:
+            return True
         win_rec = self._get_window_rect()
         check_pos = [[(70, 615), (36, 94, 172)], [(69, 664), (39, 100, 185)], [(545, 611), (24, 67, 120)], [(545, 665), (27, 78, 144)], [(68, 313), (153, 12, 64)], [(69, 365), (158, 12, 64)], [(543, 317), (107, 8, 44)], [(542, 365), (120, 10, 52)]]
         for pos in check_pos:
-            if not pg.pixelMatchesColor(pos[0][0]+win_rec[0], pos[0][1]+win_rec[1], pos[1], 10):
+            if not pg.pixelMatchesColor(pos[0][0]+win_rec[0], pos[0][1]+win_rec[1]+12, pos[1], 10):
                 return False
         return True
 
