@@ -19,6 +19,8 @@ def f2(c: Card, game: GameBoard):
         if game.enemies_pos():
             return (game.enemies_pos()[0][0], game.enemies_pos()[0][1] + 180)
         return (144, 262) #atacar a la torre
+    if c.stats.get('type', '') == "Building":
+        return (300, 640)
     return (avX, 823)
 
 

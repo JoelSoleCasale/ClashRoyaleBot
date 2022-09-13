@@ -29,7 +29,7 @@ def get_pos():
         time.sleep(.05)
 
 def main():
-    for i in range(1):
+    for i in range(20):
         get_pos()
 
 if __name__ == '__main__':
