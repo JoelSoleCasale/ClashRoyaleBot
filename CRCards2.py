@@ -12,15 +12,18 @@ def f1(c: Card, game: GameBoard):
 
 
 def f2(c: Card, game: GameBoard):
-    avX = sum([x for x,y in game.enemies_pos()])//len(game.enemies_pos()) if game.enemies_pos() else random.randint(52, 558)
-    if c.stats.get('hitpoints', 10) > 1000: # tank unit
+    avX = sum([x for x, y in game.enemies_pos()])//len(game.enemies_pos()) if game.enemies_pos() else random.randint(52, 558)
+    avY = sum([y for x, y in game.enemies_pos()])//len(game.enemies_pos()) if game.enemies_pos() else random.randint(52, 558)
+    if c.stats.get('hitpoints', 10) > 1000:  # tank unit
         return (avX, 635)
     if c.stats.get('type', '') == 'Spell':
         if game.enemies_pos():
-            return (game.enemies_pos()[0][0], game.enemies_pos()[0][1] + 180)
-        return (144, 262) #atacar a la torre
+            return (avX, avY + 180)
+        return (144, 262)  # atacar a la torre
     if c.stats.get('type', '') == "Building":
-        return (random.randint(100, 500), 535)
+        if c.stats.get('range', 0) >= 11000:
+            return (random.randint(100, 500), 535)
+        return (random.randint(280, 320), 680)
     return (avX, random.randint(680, 823))
 
 
