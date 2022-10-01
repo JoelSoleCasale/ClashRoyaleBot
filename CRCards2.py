@@ -1,9 +1,13 @@
-# Information for how to play each card of the deck
+'''
+Script that manages all the information about the cards and how to play it
+'''
 from gameBoard import *
 import random
 
 
-def f1(c: Card, game: GameBoard):
+def f1(c: Card, game: GameBoard) -> int:
+    '''Given a card c and a GameBoard state,
+    returns an arbitrary number depending on how good it would be to play that card'''
     if c.stats.get('type','') == 'Spell' and not game.enemies_pos():
         return 0
     if 'Tornado' in game.deck_cards and 'Rocket' in game.deck_cards:
@@ -22,7 +26,9 @@ def f1(c: Card, game: GameBoard):
     return 100
 
 
-def f2(c: Card, game: GameBoard):
+def f2(c: Card, game: GameBoard) -> Pos:
+    '''Given a card to place c and a GameBoard state,
+    returns the best position to place that card in the board'''
     avX = sum([x for x, y in game.enemies_pos()])//len(game.enemies_pos()) if game.enemies_pos() else random.randint(52, 558)
     avY = sum([y for x, y in game.enemies_pos()])//len(game.enemies_pos()) if game.enemies_pos() else random.randint(52, 558)
     if c.stats.get('hitpoints', 10) > 1000:  # tank unit
@@ -32,7 +38,7 @@ def f2(c: Card, game: GameBoard):
             return (game._used_cards[-1][2][0], game._used_cards[-1][2][1] + 10)
         if game.enemies_pos():
             return (avX, avY + 180)
-        return (144, 262)  # atacar a la torre
+        return (144, 262)  
     if c.stats.get('type', '') == "Building":
         if c.stats.get('range', 0) >= 11000:
             return (random.randint(100, 500), 535)
@@ -78,5 +84,4 @@ for name in names:
         CARDS_DICT[name.replace(' ', '').replace('.', '')] = Card(name, f1, f2)
 
 if __name__ == '__main__':
-    a = sorted([name for name, card in CARDS_DICT.items()])
-    print(a)
+    print(sorted([name for name, card in CARDS_DICT.items()]))

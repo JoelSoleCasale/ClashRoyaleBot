@@ -1,4 +1,6 @@
-# Debugging script to esasly get regions and positions on screen
+'''
+Debugging script to esasly get regions and positions on screen
+'''
 import random, win32gui, os
 import pyautogui as pg
 import keyboard
@@ -61,7 +63,6 @@ def save_cards():
         #         break
         if save_card:
             pg.screenshot(f'C:/Users/joels/python-programs/GitHub/ClashRoyaleBot/Cards1080p/{random.randint(100000, 999999)}.png', region=card_reg)  # card region
-
 
 
 def main():

@@ -1,9 +1,9 @@
-from typing import List, Optional
+''' 
+Main script that manages the games
+'''
+from typing import List
 import pyautogui as pg
-import random
-import keyboard
 import time
-import os
 from datetime import datetime
 from CRCards2 import *
 
@@ -47,7 +47,7 @@ def start_game(gamemode: str = 'showdown') -> None:
         clicks = [(556, 149), (375, 386), (413, 657)]
     elif gamemode == 'normal':
         clicks = [(180, 745), (307, 734)]
-    assert clicks
+    assert clicks, 'Invalid gamemode'
     for click in clicks:
         move_and_click(click, .15)
 
@@ -57,6 +57,7 @@ def exit_game():
 
 
 def check_maestry_rewards():
+    '''check if there is any maestry rewards and claims it if necesary'''
     win_rec = get_window_rect()
     if pg.pixel(191+win_rec[0], 1085+win_rec[1])[0] > 200:
         seq = [(158, 1048), (551, 823), (122, 341), (316, 811), (316, 811), (328, 662), (328, 662), (332, 776), (332, 776), (342, 618), (342, 618), (342, 698), (342, 698), (364, 606), (364, 606), (363, 718), (363, 718), (368, 587), (363, 724), (361, 576), (367, 721), (363, 591), (358, 723), (370, 589), (365, 738), (355, 594),
@@ -94,7 +95,7 @@ def strat_2():
         t1 = time.time()
 
 def correct_window():
-    '''The BlueStacks window must be fullHD, and with the correct with and heigh'''
+    '''The BlueStacks window must be fullHD, and with the correct with and height'''
     hwnd = win32gui.FindWindow(None, "BlueStacks App Player")
     rect = list(win32gui.GetWindowRect(hwnd))
     win32gui.MoveWindow(hwnd, rect[0], rect[1], 637, 1108, True)
@@ -111,27 +112,6 @@ def main():
         exit_game()
         check_maestry_rewards()
 
-
-def wait_for_key(k):
-    '''waits until the key k is pressed, used for debugging'''
-    while(keyboard.is_pressed(k) is False):
-        time.sleep(.05)
-    while(keyboard.is_pressed(k) is True):
-        time.sleep(.05)
-
-
-@timing
-def enemy_pos_test():
-    game = GameBoard()
-    while(True):
-        wait_for_key('a')
-        game.update_enemies()
-        enemies = game.enemies_pos()
-        print(enemies)
-        for e in enemies:
-            pg.moveTo((int(e[0]), int(e[1])))
-            print(pg.pixel(int(e[0])+5, int(e[1])+13))
-            time.sleep(.5)
 
 if __name__ == '__main__':
     main()

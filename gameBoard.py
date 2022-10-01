@@ -1,6 +1,9 @@
-from typing import Callable, List, Optional, Tuple, Type
+'''
+Sript that manages all the GameBoard functions and Card definitions
+'''
+
+from typing import Callable, List, Optional, Tuple
 import pyautogui as pg
-import keyboard
 import threading
 import win32gui
 import json
@@ -15,12 +18,10 @@ CARDS_STATS = json.load(open('CardStats/useful_cards_stats.json'))
 # Class definitions
 
 
-class GameBoard:
-    ...
+class GameBoard: ...
 
 
-class Card:
-    ...
+class Card: ...
 
 
 class Card:
@@ -188,10 +189,11 @@ class GameBoard:
         pg.moveTo(pos[0]+win_rec[0], pos[1]+win_rec[1], duration=.1)
         pg.click()
         self._used_cards.append((self.passed_time(), card, pos))
+
         # we update the deck:
         self.deck_cards[index] = None
-        # time.sleep(.5)
-        # threading.Timer(2, self.update_card, [index, self.next_cards[0]]).start()
+        time.sleep(.5)
+        threading.Timer(1.5, self.update_card, [index, self.next_cards[0]]).start()
         self.next_cards.pop(0)
         self.next_cards.append(card)
 
@@ -216,18 +218,18 @@ class GameBoard:
                 return False
         return True
 
-    def get_crowns(enemy: bool) -> int:
-        '''returns the enemy or ally crowns, True for enemy, False for ally
-        prec: the game must have ended'''
-        if enemy:
-            pixels = [(1082, 341), (1260, 325), (1437, 342)]
-            for i in range(3):
-                if pg.pixel(pixels[i][0], pixels[i][1])[1] < 120:
-                    return i
-            return 3
-        else:
-            pixels = [(1085, 743), (1263, 724), (1441, 744)]
-            for i in range(3):
-                if pg.pixel(pixels[i][0], pixels[i][1])[0] < 200:
-                    return i
-            return 3
+    # def get_crowns(enemy: bool) -> int:
+    #     '''returns the enemy or ally crowns, True for enemy, False for ally
+    #     prec: the game must have ended'''
+    #     if enemy:
+    #         pixels = [(1082, 341), (1260, 325), (1437, 342)]
+    #         for i in range(3):
+    #             if pg.pixel(pixels[i][0], pixels[i][1])[1] < 120:
+    #                 return i
+    #         return 3
+    #     else:
+    #         pixels = [(1085, 743), (1263, 724), (1441, 744)]
+    #         for i in range(3):
+    #             if pg.pixel(pixels[i][0], pixels[i][1])[0] < 200:
+    #                 return i
+    #         return 3
