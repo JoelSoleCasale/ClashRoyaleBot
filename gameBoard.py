@@ -165,14 +165,14 @@ class GameBoard:
                         pos.append(x1)
         self._enemy_positions = pos
 
-    def enemies_pos(self) -> List[Pos]:
+    def enemy_pos(self) -> List[Pos]:
         '''returns a list of all the enemy positions in screen, must be updated with the "update_enemy_pos" function'''
         return self._enemy_positions
 
     def enemies_in_reg(self, reg: List[int]) -> int:
         '''returns the number on enemies in a certain region of the map'''
         tot = 0
-        for enemy in self.enemies_pos():
+        for enemy in self.enemy_pos():
             if reg[0] <= enemy[0] <= reg[0]+reg[2] and reg[1] <= enemy[1] <= reg[1]+reg[3]:
                 tot += 1
         return tot

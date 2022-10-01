@@ -101,9 +101,7 @@ def correct_window():
     win32gui.MoveWindow(hwnd, rect[0], rect[1], 637, 1108, True)
 
 def main():
-    wins, loses, total_crowns = 0, 0, 0
-    t_end = time.time() + 3600
-    for i in range(10**4):
+    for i in range(10**4): # number of games to play
         correct_window()
         print(f'{datetime.now().strftime("%H:%M:%S")} | Game {i+1}'+' '*60)
         start_game('special')

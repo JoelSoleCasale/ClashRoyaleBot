@@ -8,7 +8,7 @@ import random
 def f1(c: Card, game: GameBoard) -> int:
     '''Given a card c and a GameBoard state,
     returns an arbitrary number depending on how good it would be to play that card'''
-    if c.stats.get('type','') == 'Spell' and not game.enemies_pos():
+    if c.stats.get('type','') == 'Spell' and not game.enemy_pos():
         return 0
     if 'Tornado' in game.deck_cards and 'Rocket' in game.deck_cards:
         if c.stats.get('name', '') == 'Tornado' and game.get_elixir() >=7:
@@ -29,14 +29,14 @@ def f1(c: Card, game: GameBoard) -> int:
 def f2(c: Card, game: GameBoard) -> Pos:
     '''Given a card to place c and a GameBoard state,
     returns the best position to place that card in the board'''
-    avX = sum([x for x, y in game.enemies_pos()])//len(game.enemies_pos()) if game.enemies_pos() else random.randint(52, 558)
-    avY = sum([y for x, y in game.enemies_pos()])//len(game.enemies_pos()) if game.enemies_pos() else random.randint(52, 558)
+    avX = sum([x for x, y in game.enemy_pos()])//len(game.enemy_pos()) if game.enemy_pos() else random.randint(52, 558)
+    avY = sum([y for x, y in game.enemy_pos()])//len(game.enemy_pos()) if game.enemy_pos() else random.randint(52, 558)
     if c.stats.get('hitpoints', 10) > 1000:  # tank unit
         return (avX, 635)
     if c.stats.get('type', '') == 'Spell':
         if game._used_cards and game._used_cards[-1][1] == 'Tornado':
             return (game._used_cards[-1][2][0], game._used_cards[-1][2][1] + 10)
-        if game.enemies_pos():
+        if game.enemy_pos():
             return (avX, avY + 180)
         return (144, 262)  
     if c.stats.get('type', '') == "Building":
