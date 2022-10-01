@@ -79,7 +79,7 @@ def strat_2():
         game.update_enemies()
         game.update_elixir()
         card_scores = [UNKNOWN_SCORE for i in range(4)]
-        # print(str(game.deck_cards)+' '*30, end='\r')
+        print(str(game.deck_cards)+' '*30, end='\r')
         for i in range(4):
             if game.deck_cards[i] is not None:
                 card_scores[i] = CARDS_DICT[game.deck_cards[i]].score(game)
@@ -90,7 +90,7 @@ def strat_2():
             pos = CARDS_DICT[game.deck_cards[max_index]].place_in_board(game)
             if pos is not None:
                 game.place_card(game.deck_cards[max_index], pos)
-        print(f"Iteration time: {time.time()-t1}", end='\r')
+        # print(f"Iteration time: {time.time()-t1}", end='\r')
         t1 = time.time()
 
 def correct_window():

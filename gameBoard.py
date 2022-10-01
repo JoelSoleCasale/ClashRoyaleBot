@@ -190,10 +190,8 @@ class GameBoard:
         self._used_cards.append((self.passed_time(), card, pos))
         # we update the deck:
         self.deck_cards[index] = None
-        time.sleep(.1)
-        # the time the new card takes to arrive to the deck
-        threading.Timer(2.5, self.update_card, [
-                        index, self.next_cards[0]]).start()
+        # time.sleep(.5)
+        # threading.Timer(2, self.update_card, [index, self.next_cards[0]]).start()
         self.next_cards.pop(0)
         self.next_cards.append(card)
 

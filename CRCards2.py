@@ -4,10 +4,21 @@ import random
 
 
 def f1(c: Card, game: GameBoard):
+    if c.stats.get('type','') == 'Spell' and not game.enemies_pos():
+        return 0
+    if 'Tornado' in game.deck_cards and 'Rocket' in game.deck_cards:
+        if c.stats.get('name', '') == 'Tornado' and game.get_elixir() >=7:
+            return 1000
+        return 0
+    if game._used_cards and game._used_cards[-1][1] == 'Tornado':
+        if 'Rocket' in game.deck_cards:
+            if c.stats.get('name', '') == 'RocketSpell':
+                return 1000
+            return 0
     if game.get_elixir() >= 8:
         return random.randint(200, 300)
     if game.get_elixir()+1 >= c.stats.get('elixir', 9):
-        return random.randint(200, 300)
+        return random.randint(100, 300)
     return 100
 
 
@@ -17,6 +28,8 @@ def f2(c: Card, game: GameBoard):
     if c.stats.get('hitpoints', 10) > 1000:  # tank unit
         return (avX, 635)
     if c.stats.get('type', '') == 'Spell':
+        if game._used_cards and game._used_cards[-1][1] == 'Tornado':
+            return (game._used_cards[-1][2][0], game._used_cards[-1][2][1] + 10)
         if game.enemies_pos():
             return (avX, avY + 180)
         return (144, 262)  # atacar a la torre
