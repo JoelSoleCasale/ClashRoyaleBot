@@ -45,37 +45,8 @@ def f2(c: Card, game: GameBoard) -> Pos:
         return (random.randint(280, 320), 680)
     return (avX, random.randint(680, 823))
 
-
-# BarbarianHut = Card('Barbarian Hut', f1, f2)
-# ElixirCollector = Card('Elixir Collector', f1, f2)
-# Furnace = Card('Furnace', f1, f2)
-# GoblinHut = Card('Goblin Hut', f1, f2)
-# IceWizard = Card('Ice Wizard', f1, f2)
-# Knight = Card('Knight', f1, f2)
-# Musketeer = Card('Musketeer', f1, f2)
-# Tombstone = Card('Tombstone', f1, f2)
-# FireSpirit = Card('Fire Spirit', f1, f2)
-# Bomber = Card('Bomber', f1, f2)
-# MegaMinion = Card('Mega Minion', f1, f2)
-# IceSpirit = Card('Ice Spirit', f1, f2)
-# MiniPEKKA = Card('Mini P.E.K.K.A', f1, f2)
-
 # for each card name associates its card class
-CARDS_DICT = {
-    # 'BarbarianHut': BarbarianHut,
-    # 'ElixirCollector': ElixirCollector,
-    # 'Furnace': Furnace,
-    # 'GoblinHut': GoblinHut,
-    # 'IceWizard': IceWizard,
-    # 'Knight': Knight,
-    # 'Musketeer': Musketeer,
-    # 'Tombstone': Tombstone,
-    # 'FireSpirit': FireSpirit,
-    # 'Bomber': Bomber,
-    # 'MegaMinion': MegaMinion,
-    # 'IceSpirit': IceSpirit,
-    # 'MiniPEKKA': MiniPEKKA
-}
+CARDS_DICT = { }
 
 # for any card not defined in the dict set the default value:
 names = [name for name, card in CARDS_STATS.items()]
